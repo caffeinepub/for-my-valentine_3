@@ -1,43 +1,31 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-13T19:34:40.756Z",
+  "generatedAt": "2026-02-13T19:44:05.204Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 1,
+    "total": 1,
+    "implemented": 0,
     "items": [
       {
-        "id": "REQ-13",
-        "summary": "Undo the most recent product change by reverting the final step (Page 5) main heading text in the Valentine proposal flow to exactly: \"So Shruti ❤️....\".",
+        "id": "REQ-16",
+        "summary": "Undo (revert) the most recent product/code change that triggered the current deployment error, then redeploy the application so the live Preview loads successfully without deployment errors.",
         "status": "missing",
         "plannedFiles": [
-          "frontend/src/features/valentine/steps/FinalQuestionStep.tsx"
+          "frontend/src/features/valentine/steps/MemoriesStep.tsx",
+          "frontend/DEPLOYMENT_CHECKLIST.md"
         ],
         "matchedFiles": []
-      },
-      {
-        "id": "REQ-14",
-        "summary": "Redeploy the application after the undo so the live Preview loads successfully without deployment errors.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/DEPLOYMENT_CHECKLIST.md"
-        ],
-        "matchedFiles": [
-          "frontend/DEPLOYMENT_CHECKLIST.md"
-        ]
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
     "feature_evidence.json",
-    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/DEPLOYMENT_CHECKLIST.md",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

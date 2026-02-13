@@ -1,35 +1,28 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Revert final step heading text and ensure successful redeploy",
+  "title": "Revert breaking frontend change to restore successful deployment and Valentine flow",
   "requirements": [
     {
-      "id": "REQ-13",
-      "summary": "Revert Page 5 (final step) main heading text to the exact requested string without changing any other user-facing copy.",
+      "id": "REQ-16",
+      "summary": "Revert the latest breaking change so the Preview deploys successfully and the 5-step Valentine proposal flow works end-to-end without console issues.",
       "acceptanceCriteria": [
-        "In the final step (Page 5), the main heading text is exactly \"So Shruti ❤️....\" (including punctuation and emoji).",
-        "No other user-facing copy changes are introduced as part of this undo."
+        "Deployment completes successfully with no build/deploy errors.",
+        "The Preview loads successfully.",
+        "The Valentine proposal flow is navigable through all 5 steps end-to-end.",
+        "The final step heading renders and reads exactly \"So Shruti ❤️....\".",
+        "No console errors or warnings are present in the Preview during normal interaction."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/features/valentine/steps/FinalQuestionStep.tsx",
+          "path": "frontend/src/features/valentine/steps/MemoriesStep.tsx",
           "operation": "modify",
-          "description": "Ensure the Page 5 main heading is exactly \"So Shruti ❤️....\" and avoid any other user-facing copy changes; do not modify any files under frontend/src/components/ui."
-        }
-      ]
-    },
-    {
-      "id": "REQ-14",
-      "summary": "Prepare the frontend for a clean redeploy by adding a lightweight deploy verification checklist and confirming the Valentine flow remains usable end-to-end.",
-      "acceptanceCriteria": [
-        "A fresh deployment completes successfully (no deployment failure).",
-        "The deployed Preview loads and the 5-step Valentine proposal flow is usable end-to-end."
-      ],
-      "file_operations": [
+          "description": "Revert/remove the recent change that introduces the current deployment failure (e.g., remove the new icon-library import/usage) while keeping the Memories step UI and behavior intact. Continue using the shadcn-ui Button component for actions; verify the component's usage instructions before implementing."
+        },
         {
           "path": "frontend/DEPLOYMENT_CHECKLIST.md",
-          "operation": "create",
-          "description": "Add a short redeploy checklist focused on verifying the Preview build loads successfully and the 5-step Valentine proposal flow works end-to-end after the undo; keep all text in English."
+          "operation": "modify",
+          "description": "Update/confirm the checklist items relevant to the reverted change (Memories step rendering, upload/reset interactions, no console errors) to match the restored working implementation."
         }
       ]
     }

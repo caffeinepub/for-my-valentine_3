@@ -1,10 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Undo the most recent product copy change by restoring the Page 5 main heading in the Valentine proposal flow, and ensure the app redeploys cleanly.
+**Goal:** Revert the most recent change that caused the current deployment failure and redeploy so the Preview loads successfully again.
 
 **Planned changes:**
-- Revert the final step (Page 5) main heading text to exactly: "So Shruti ❤️....".
-- Redeploy to confirm the Preview loads successfully and the 5-step flow works end-to-end without errors.
+- Identify and revert the latest product/code change responsible for the build/deploy error.
+- Redeploy and verify the Valentine proposal flow works end-to-end across all 5 steps.
+- Confirm the final step heading renders exactly as: "So Shruti ❤️...." and that the Preview has no console errors/warnings during normal interaction.
 
-**User-visible outcome:** The final step (Page 5) displays the heading "So Shruti ❤️...." exactly, and the deployed Preview loads successfully with the full 5-step Valentine proposal flow usable.
+**User-visible outcome:** The app deploys without errors, the live Preview loads successfully, and users can navigate the full 5-step Valentine proposal flow to the final step with the correct heading displayed.

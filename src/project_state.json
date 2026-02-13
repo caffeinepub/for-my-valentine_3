@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 17,
+  "projectStateVersion": 21,
   "summary": "Build a romantic multi-page Valentine proposal website (single HTML/CSS/JS) with animated hearts, memory photo section, and interactive YES/NO buttons with confetti celebration.",
   "architectural_notes": [
     "Implement as a single static HTML file with embedded CSS and vanilla JS controlling page navigation and animations (floating hearts via interval, confetti on YES)."
@@ -113,6 +113,14 @@
         "REQ-14"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-in-the-valentine-proposal-flow-final-step-page-5-update-the-main-heading-text-by-replacing-the-substring-so-shruti-with-so-shrutiii-three-i-s-keeping-the-rest-of-the-heading-unchanged-including-any-emojis-punctuation-already-present",
+      "title": "In the Valentine proposal flow Final step (Page 5), update the main heading text by replacing the substring \"So Shruti\" with \"So Shrutiii\" (three i's), keeping the rest of the heading unchanged (including any emojis/punctuation already present).",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -151,6 +159,20 @@
       "summary": "Undo the most recent product change by reverting the final step (Page 5) main heading text in the Valentine proposal flow to exactly: \"So Shruti ❤️....\".",
       "reqIds": [
         "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Update the final step (Page 5) main heading text by replacing \"So Shruti\" with \"So Shrutiii\" (three i's) in the Valentine proposal flow.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Undo (revert) the most recent product/code change that triggered the current deployment error, then redeploy the application so the live Preview loads successfully without deployment errors.",
+      "reqIds": [
+        "REQ-16"
       ],
       "status": "pending"
     }

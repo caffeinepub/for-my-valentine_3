@@ -1,50 +1,37 @@
 {
   "kind": "build_request",
-  "title": "Undo the most recent change and redeploy",
+  "title": "Undo the last change that caused deployment failure and redeploy",
   "priority": "high",
   "requirements": [
     {
-      "id": "REQ-13",
-      "text": "Undo the most recent product change by reverting the final step (Page 5) main heading text in the Valentine proposal flow to exactly: \"So Shruti ❤️....\".",
-      "target": "frontend",
+      "id": "REQ-16",
+      "text": "Undo (revert) the most recent product/code change that triggered the current deployment error, then redeploy the application so the live Preview loads successfully without deployment errors.",
+      "target": "both",
       "source": {
         "messageIds": [
           "msg-3"
         ],
         "quotes": [
-          "undo the step and redeploy it"
+          "undo the action and redeploy it"
         ]
       },
       "acceptanceCriteria": [
-        "In the final step (Page 5), the main heading text is exactly \"So Shruti ❤️....\" (including punctuation and emoji).",
-        "No other user-facing copy changes are introduced as part of this undo."
-      ]
-    },
-    {
-      "id": "REQ-14",
-      "text": "Redeploy the application after the undo so the live Preview loads successfully without deployment errors.",
-      "target": "unknown",
-      "source": {
-        "messageIds": [
-          "msg-3"
-        ],
-        "quotes": [
-          "undo the step and redeploy it"
-        ]
-      },
-      "acceptanceCriteria": [
-        "A fresh deployment completes successfully (no deployment failure).",
-        "The deployed Preview loads and the 5-step Valentine proposal flow is usable end-to-end."
+        "Deployment completes successfully with no build/deploy errors.",
+        "The Preview loads successfully.",
+        "The Valentine proposal flow is navigable through all 5 steps end-to-end.",
+        "The final step heading renders and reads exactly \"So Shruti ❤️....\".",
+        "No console errors or warnings are present in the Preview during normal interaction."
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under frontend/src/components/ui or any other paths listed as immutable in SYSTEM_CONTEXT.",
-    "Keep all user-facing text in English."
+    "Keep the backend as a single Motoko actor in backend/main.mo; only add migration.mo if state schema changes require it.",
+    "Do not modify files under frontend/src/components/ui or any paths listed as immutable (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui).",
+    "All user-facing text must be in English."
   ],
   "nonGoals": [
-    "Do not add new steps, new animations, or additional interactions beyond the undo and redeploy.",
-    "Do not add backend features or persistence beyond what already exists."
+    "Adding new features or changing the Valentine proposal content beyond what is necessary to revert the breaking change and restore successful deployment.",
+    "Introducing new backend persistence or external services/integrations."
   ],
   "imageRequirements": {
     "required": [],
