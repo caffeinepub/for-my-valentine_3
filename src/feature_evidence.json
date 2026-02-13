@@ -1,0 +1,23 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-redeploy-the-application-after-the-undo-so-the-live-preview-loads-successfully-without-deployment-errors",
+      "featureTitle": "Redeploy the application after the undo so the live Preview loads successfully without deployment errors.",
+      "files": [
+        "frontend/DEPLOYMENT_CHECKLIST.md"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

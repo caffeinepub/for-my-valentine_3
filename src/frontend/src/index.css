@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 1.5rem;
+        /* Romantic pink/rose theme */
+        --background: 0.96 0.08 345;
+        --foreground: 0.25 0.05 345;
+        --card: 1 0.05 345;
+        --card-foreground: 0.25 0.05 345;
+        --popover: 1 0.05 345;
+        --popover-foreground: 0.25 0.05 345;
+        --primary: 0.62 0.22 345;
+        --primary-foreground: 1 0 0;
+        --secondary: 0.85 0.12 345;
+        --secondary-foreground: 0.25 0.05 345;
+        --muted: 0.92 0.08 345;
+        --muted-foreground: 0.50 0.05 345;
+        --accent: 0.85 0.12 345;
+        --accent-foreground: 0.25 0.05 345;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.88 0.08 345;
+        --input: 0.88 0.08 345;
+        --ring: 0.62 0.22 345;
+        --success: 0.55 0.18 145;
+        --success-foreground: 1 0 0;
+    }
+
+    .dark {
+        --background: 0.20 0.05 345;
+        --foreground: 0.98 0.05 345;
+        --card: 0.25 0.05 345;
+        --card-foreground: 0.98 0.05 345;
+        --popover: 0.30 0.05 345;
+        --popover-foreground: 0.98 0.05 345;
+        --primary: 0.75 0.18 345;
+        --primary-foreground: 0.20 0.05 345;
+        --secondary: 0.35 0.08 345;
+        --secondary-foreground: 0.98 0.05 345;
+        --muted: 0.35 0.08 345;
+        --muted-foreground: 0.65 0.05 345;
+        --accent: 0.45 0.10 345;
+        --accent-foreground: 0.98 0.05 345;
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.20 0.05 345;
+        --border: 1 0 0 / 10%;
+        --input: 1 0 0 / 15%;
+        --ring: 0.65 0.15 345;
+        --success: 0.60 0.15 145;
+        --success-foreground: 0.20 0.05 345;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        margin: 0;
+        overflow-x: hidden;
+    }
+}
+
+@layer utilities {
+    /* Floating hearts animation */
+    @keyframes float-up {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh);
+            opacity: 0;
+        }
+    }
+
+    .animate-float-up {
+        animation: float-up 6s linear forwards;
+    }
+
+    /* Confetti falling animation */
+    @keyframes confetti-fall {
+        to {
+            transform: translateY(100vh) rotate(360deg);
+        }
+    }
+
+    .animate-confetti-fall {
+        animation: confetti-fall 4s linear forwards;
+    }
+
+    /* Smooth fade in */
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fade-in 0.5s ease-out forwards;
+    }
+}

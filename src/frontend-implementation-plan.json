@@ -1,0 +1,37 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Revert final step heading text and ensure successful redeploy",
+  "requirements": [
+    {
+      "id": "REQ-13",
+      "summary": "Revert Page 5 (final step) main heading text to the exact requested string without changing any other user-facing copy.",
+      "acceptanceCriteria": [
+        "In the final step (Page 5), the main heading text is exactly \"So Shruti ❤️....\" (including punctuation and emoji).",
+        "No other user-facing copy changes are introduced as part of this undo."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/valentine/steps/FinalQuestionStep.tsx",
+          "operation": "modify",
+          "description": "Ensure the Page 5 main heading is exactly \"So Shruti ❤️....\" and avoid any other user-facing copy changes; do not modify any files under frontend/src/components/ui."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Prepare the frontend for a clean redeploy by adding a lightweight deploy verification checklist and confirming the Valentine flow remains usable end-to-end.",
+      "acceptanceCriteria": [
+        "A fresh deployment completes successfully (no deployment failure).",
+        "The deployed Preview loads and the 5-step Valentine proposal flow is usable end-to-end."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/DEPLOYMENT_CHECKLIST.md",
+          "operation": "create",
+          "description": "Add a short redeploy checklist focused on verifying the Preview build loads successfully and the 5-step Valentine proposal flow works end-to-end after the undo; keep all text in English."
+        }
+      ]
+    }
+  ]
+}

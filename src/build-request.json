@@ -1,0 +1,53 @@
+{
+  "kind": "build_request",
+  "title": "Undo the most recent change and redeploy",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-13",
+      "text": "Undo the most recent product change by reverting the final step (Page 5) main heading text in the Valentine proposal flow to exactly: \"So Shruti ❤️....\".",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "undo the step and redeploy it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "In the final step (Page 5), the main heading text is exactly \"So Shruti ❤️....\" (including punctuation and emoji).",
+        "No other user-facing copy changes are introduced as part of this undo."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Redeploy the application after the undo so the live Preview loads successfully without deployment errors.",
+      "target": "unknown",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "undo the step and redeploy it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A fresh deployment completes successfully (no deployment failure).",
+        "The deployed Preview loads and the 5-step Valentine proposal flow is usable end-to-end."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui or any other paths listed as immutable in SYSTEM_CONTEXT.",
+    "Keep all user-facing text in English."
+  ],
+  "nonGoals": [
+    "Do not add new steps, new animations, or additional interactions beyond the undo and redeploy.",
+    "Do not add backend features or persistence beyond what already exists."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

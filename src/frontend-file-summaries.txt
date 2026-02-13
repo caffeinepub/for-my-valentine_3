@@ -1,0 +1,16 @@
+{
+  "frontend/src/App.tsx": "Main app entry point that renders the ValentineProposalFlow component.",
+  "frontend/src/index.css": "Global styles with romantic pink/rose OKLCH color system, floating hearts animation, confetti animation, and fade-in transitions.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with success color tokens and Segoe UI font family matching the original design.",
+  "frontend/src/features/valentine/ValentineProposalFlow.tsx": "Main flow controller managing the 5-step Valentine proposal state and rendering the appropriate step component.",
+  "frontend/src/features/valentine/ValentineLayout.tsx": "Reusable centered layout wrapper providing consistent spacing and fade-in animation for all steps.",
+  "frontend/src/features/valentine/FloatingHeartsBackground.tsx": "Background component that continuously spawns floating heart emojis that rise and fade out, cleaning up DOM nodes after animation.",
+  "frontend/src/features/valentine/steps/AttentionStep.tsx": "First step displaying the attention-grabbing message with a primary action button to enter the experience.",
+  "frontend/src/features/valentine/steps/HelloStep.tsx": "Second step with a personalized greeting explaining the effort put into creating the website.",
+  "frontend/src/features/valentine/steps/MemoriesStep.tsx": "Third step displaying three memory cards with romantic captions (including the updated \"Can't keep my eyes off of you 👀\" caption), each featuring upload and reset controls that allow users to replace placeholder images with their own photos, persisted across page refreshes.",
+  "frontend/src/features/valentine/steps/LetterStep.tsx": "Fourth step showing a heartfelt letter message building anticipation for the final question.",
+  "frontend/src/features/valentine/steps/FinalQuestionStep.tsx": "Final step with the Valentine question displaying \"So Shruti ❤️....\" as the main heading, playful YES/NO buttons where NO moves on hover, and response messages with confetti on YES.",
+  "frontend/src/features/valentine/ConfettiOverlay.tsx": "Confetti effect component that spawns 100 colorful falling pieces with cleanup after animation completes.",
+  "frontend/src/features/valentine/hooks/useMemoriesImages.ts": "Custom React hook that manages three memory card images with localStorage persistence, providing upload and reset functionality with safe fallback to placeholder images on corrupted data.",
+  "frontend/DEPLOYMENT_CHECKLIST.md": "Lightweight deployment verification checklist that confirms the 5-step Valentine proposal flow works end-to-end and all interactive features (confetti, moving NO button, image uploads) function correctly after deployment."
+}
