@@ -1,86 +1,75 @@
 {
   "kind": "build_request",
-  "title": "Remove stock images by replacing Memories photos with new non-stock assets",
-  "priority": "high",
+  "title": "Update Final Step NO button: stop moving on hover and show new message on click",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-30",
-      "text": "Replace the three current Memories (Step 3) static images with new non-stock images by generating three new 300x200 JPG assets and updating the Memories step to reference the new asset paths, while keeping the existing layout, captions, and behavior unchanged.",
+      "id": "REQ-44",
+      "text": "In the Valentine proposal flow Final step (Page 5), remove the NO button “run away/move on hover” behavior so that hovering the NO button does not change its position and it remains in the normal button layout.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "recent-messages"
         ],
         "quotes": [
-          "remove the stock images now"
+          "remove the run feature of no button"
         ]
       },
       "acceptanceCriteria": [
-        "MemoriesStep renders 3 cards with the same captions and layout as before.",
-        "The images used in MemoriesStep are NOT the current files `/assets/generated/memory-1.dim_300x200.jpg`, `/assets/generated/memory-2.dim_300x200.jpg`, `/assets/generated/memory-3.dim_300x200.jpg` and instead use newly generated non-stock assets.",
-        "All three images load correctly in the browser and remain static across refreshes (no upload UI and no localStorage-based overrides)."
+        "Hovering the NO button does not move it to a random position.",
+        "The NO button remains positioned normally within the YES/NO button row (no absolute positioning driven by hover).",
+        "No hover event handler is attached that changes NO button coordinates/state."
       ]
     },
     {
-      "id": "REQ-31",
-      "text": "Audit the frontend for any remaining placeholder/stock-image references (including the historical `https://via.placeholder.com/300x200` memory URLs) and ensure no UI-visible images are still using placeholder/stock sources.",
+      "id": "REQ-45",
+      "text": "In the Valentine proposal flow Final step (Page 5), update the NO button click behavior so it displays exactly this response text: \"The button is broken, try the green one instead 😏💚\".",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "recent-messages"
         ],
         "quotes": [
-          "remove the stock images now"
+          "when no button is clicked show that The button is broken, try the green one instead 😏💚"
         ]
       },
       "acceptanceCriteria": [
-        "No references to `via.placeholder.com/300x200` remain in the frontend codebase.",
-        "All UI-visible images used by the Valentine flow are loaded from bundled static assets (no external placeholder/stock URLs)."
+        "Clicking the NO button sets the response message to exactly: \"The button is broken, try the green one instead 😏💚\" (including emoji and punctuation).",
+        "The response message renders in the existing response area with the current styling (no new UI component required).",
+        "The YES button behavior remains unchanged: it still triggers confetti and shows the existing YES response text."
       ]
     },
     {
-      "id": "REQ-32",
-      "text": "Update `frontend/DEPLOYMENT_CHECKLIST.md` so the post-deployment verification section references the new Memories image asset paths instead of the old ones.",
+      "id": "REQ-46",
+      "text": "Update `frontend/DEPLOYMENT_CHECKLIST.md` to reflect the new NO button behavior (no movement on hover; on click it shows the updated message).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "recent-messages"
         ],
         "quotes": [
-          "remove the stock images now"
+          "remove the run feature of no button and when no button is clicked show that The button is broken, try the green one instead 😏💚"
         ]
       },
       "acceptanceCriteria": [
-        "The checklist lists the three updated Memories image paths that are actually used by the app.",
-        "Checklist text remains in English and the rest of the checklist remains unchanged except where required for the updated image paths."
+        "The checklist no longer claims the NO button moves on hover.",
+        "The checklist includes verification that clicking NO shows: \"The button is broken, try the green one instead 😏💚\"."
       ]
     }
   ],
   "constraints": [
-    "Do not change the 5-step navigation, step order, captions, or interactive behaviors (floating hearts, confetti, evasive NO).",
-    "Do not reintroduce any Memories image upload UI or localStorage-based image replacement behavior.",
-    "Do not modify files under `frontend/src/components/ui` or other immutable paths listed in SYSTEM_CONTEXT."
+    "Frontend must remain a single-page in-app state flow (no full page reloads).",
+    "Do not modify files under `frontend/src/components/ui` (compose them as-is).",
+    "Keep the existing romantic theme and layout; only change the NO button behavior and related copy.",
+    "Backend remains unchanged (no new Motoko canister logic required)."
   ],
   "nonGoals": [
-    "Changing any user-facing copy beyond updating the deployment checklist image path entries.",
-    "Adding new backend functionality or persistence for images."
+    "Do not change the YES button label, color, confetti animation, or YES response text.",
+    "Do not change headings/copy in other steps of the flow.",
+    "Do not add new persistence, storage, or backend APIs for this change."
   ],
   "imageRequirements": {
     "required": [],
-    "edits": [
-      "Generate new non-stock romantic memory-style image, warm tones, subtle bokeh, no text (memory-1.dim_300x200.jpg > memory-1-v2.dim_300x200.jpg)",
-      "Generate new non-stock romantic memory-style image, warm tones, different scene from the first, no text (memory-2.dim_300x200.jpg > memory-2-v2.dim_300x200.jpg)",
-      "Generate new non-stock romantic memory-style image, warm tones, different scene from the first two, no text (memory-3.dim_300x200.jpg > memory-3-v2.dim_300x200.jpg)"
-    ]
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
+    "edits": []
   }
 }

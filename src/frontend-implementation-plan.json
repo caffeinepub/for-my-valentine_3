@@ -1,71 +1,52 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Replace Memories stock images with newly generated non-stock assets",
+  "title": "Final step NO button: stop hover movement and update click message",
   "requirements": [
     {
-      "id": "REQ-30",
-      "summary": "Generate three new 300x200 JPG non-stock images and update MemoriesStep to reference them while keeping layout, captions, and behavior unchanged.",
+      "id": "REQ-44",
+      "summary": "Remove the Final step (Page 5) NO button “run away/move on hover” behavior so it stays in the normal button row layout.",
       "acceptanceCriteria": [
-        "MemoriesStep renders 3 cards with the same captions and layout as before.",
-        "The images used in MemoriesStep are NOT the current files `/assets/generated/memory-1.dim_300x200.jpg`, `/assets/generated/memory-2.dim_300x200.jpg`, `/assets/generated/memory-3.dim_300x200.jpg` and instead use newly generated non-stock assets.",
-        "All three images load correctly in the browser and remain static across refreshes (no upload UI and no localStorage-based overrides)."
+        "Hovering the NO button does not move it to a random position.",
+        "The NO button remains positioned normally within the YES/NO button row (no absolute positioning driven by hover).",
+        "No hover event handler is attached that changes NO button coordinates/state."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/memory-1-v2.dim_300x200.jpg",
-          "operation": "create",
-          "description": "Add newly generated non-stock JPG asset (300x200) per imageRequirements edit: memory-1.dim_300x200.jpg > memory-1-v2.dim_300x200.jpg."
-        },
-        {
-          "path": "frontend/public/assets/generated/memory-2-v2.dim_300x200.jpg",
-          "operation": "create",
-          "description": "Add newly generated non-stock JPG asset (300x200) per imageRequirements edit: memory-2.dim_300x200.jpg > memory-2-v2.dim_300x200.jpg."
-        },
-        {
-          "path": "frontend/public/assets/generated/memory-3-v2.dim_300x200.jpg",
-          "operation": "create",
-          "description": "Add newly generated non-stock JPG asset (300x200) per imageRequirements edit: memory-3.dim_300x200.jpg > memory-3-v2.dim_300x200.jpg."
-        },
-        {
-          "path": "frontend/src/features/valentine/steps/MemoriesStep.tsx",
+          "path": "frontend/src/features/valentine/steps/FinalQuestionStep.tsx",
           "operation": "modify",
-          "description": "Update the static PERMANENT_IMAGES paths to use `/assets/generated/memory-1-v2.dim_300x200.jpg`, `/assets/generated/memory-2-v2.dim_300x200.jpg`, and `/assets/generated/memory-3-v2.dim_300x200.jpg` while keeping existing captions array, card structure, layout classes, and button behavior unchanged."
+          "description": "Remove NO-button hover-driven movement logic by deleting the NO position state and hover handler, removing the onMouseEnter prop, and removing any style logic that switches the NO button into absolute positioning so it remains in the normal flex row layout."
         }
       ]
     },
     {
-      "id": "REQ-31",
-      "summary": "Audit and remove any remaining placeholder/stock-image references, ensuring Valentine flow images come from bundled static assets only.",
+      "id": "REQ-45",
+      "summary": "Update the Final step (Page 5) NO button click behavior to show the new response message text in the existing response area.",
       "acceptanceCriteria": [
-        "No references to `via.placeholder.com/300x200` remain in the frontend codebase.",
-        "All UI-visible images used by the Valentine flow are loaded from bundled static assets (no external placeholder/stock URLs)."
+        "Clicking the NO button sets the response message to exactly: \"The button is broken, try the green one instead 😏💚\" (including emoji and punctuation).",
+        "The response message renders in the existing response area with the current styling (no new UI component required).",
+        "The YES button behavior remains unchanged: it still triggers confetti and shows the existing YES response text."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
+          "path": "frontend/src/features/valentine/steps/FinalQuestionStep.tsx",
           "operation": "modify",
-          "description": "Update any legacy/default Memories image paths to match the new bundled static assets (`/assets/generated/memory-1-v2.dim_300x200.jpg`, `/assets/generated/memory-2-v2.dim_300x200.jpg`, `/assets/generated/memory-3-v2.dim_300x200.jpg`) and ensure no placeholder/stock URL references (including via.placeholder.com/300x200) remain in this compatibility hook."
-        },
-        {
-          "path": "frontend/src/features/valentine/steps/MemoriesStep.tsx",
-          "operation": "modify",
-          "description": "Re-check the MemoriesStep for any accidental reintroduction of placeholder/stock URLs and ensure only the new bundled static asset paths are referenced (no external URLs)."
+          "description": "Change the NO button click handler to set the response state to exactly: \"The button is broken, try the green one instead 😏💚\"; keep the existing response rendering block and keep the YES button handler (confetti + existing YES response text) unchanged."
         }
       ]
     },
     {
-      "id": "REQ-32",
-      "summary": "Update deployment checklist to reference the new Memories image asset paths.",
+      "id": "REQ-46",
+      "summary": "Update the deployment checklist to reflect the new NO button behavior (no hover movement; new click message).",
       "acceptanceCriteria": [
-        "The checklist lists the three updated Memories image paths that are actually used by the app.",
-        "Checklist text remains in English and the rest of the checklist remains unchanged except where required for the updated image paths."
+        "The checklist no longer claims the NO button moves on hover.",
+        "The checklist includes verification that clicking NO shows: \"The button is broken, try the green one instead 😏💚\"."
       ],
       "file_operations": [
         {
           "path": "frontend/DEPLOYMENT_CHECKLIST.md",
           "operation": "modify",
-          "description": "In the Post-Deployment Verification section, replace the three Memories image paths with the new ones actually used by the app: `/assets/generated/memory-1-v2.dim_300x200.jpg`, `/assets/generated/memory-2-v2.dim_300x200.jpg`, `/assets/generated/memory-3-v2.dim_300x200.jpg`, leaving all other checklist content unchanged."
+          "description": "Update the Interactive Features and Post-Deployment Verification items to remove any mention of the NO button moving on hover, and add/replace verification text to confirm clicking NO displays exactly: \"The button is broken, try the green one instead 😏💚\"."
         }
       ]
     }

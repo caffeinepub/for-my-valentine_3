@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-replace-the-three-current-memories-step-3-static-images-with-new-non-stock-images-by-generating-three-new-300x200-jpg-assets-and-updating-the-memories-step-to-reference-the-new-asset-paths-while-keeping-the-existing-layout-captions-and-behavior-unchanged",
-      "featureTitle": "Replace the three current Memories (Step 3) static images with new non-stock images by generating three new 300x200 JPG assets and updating the Memories step to reference the new asset paths, while keeping the existing layout, captions, and behavior unchanged.",
+      "featureId": "feature-in-the-valentine-proposal-flow-final-step-page-5-remove-the-no-button-run-away-move-on-hover-behavior-so-that-hovering-the-no-button-does-not-change-its-position-and-it-remains-in-the-normal-button-layout",
+      "featureTitle": "In the Valentine proposal flow Final step (Page 5), remove the NO button “run away/move on hover” behavior so that hovering the NO button does not change its position and it remains in the normal button layout.",
       "files": [
-        "frontend/src/features/valentine/steps/MemoriesStep.tsx"
+        "frontend/src/features/valentine/steps/FinalQuestionStep.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,16 +15,15 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-30"
+        "REQ-44"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-audit-the-frontend-for-any-remaining-placeholder-stock-image-references-including-the-historical-https-via-placeholder-com-300x200-memory-urls-and-ensure-no-ui-visible-images-are-still-using-placeholder-stock-sources",
-      "featureTitle": "Audit the frontend for any remaining placeholder/stock-image references (including the historical `https://via.placeholder.com/300x200` memory URLs) and ensure no UI-visible images are still using placeholder/stock sources.",
+      "featureId": "feature-in-the-valentine-proposal-flow-final-step-page-5-update-the-no-button-click-behavior-so-it-displays-exactly-this-response-text-the-button-is-broken-try-the-green-one-instead",
+      "featureTitle": "In the Valentine proposal flow Final step (Page 5), update the NO button click behavior so it displays exactly this response text: \"The button is broken, try the green one instead 😏💚\".",
       "files": [
-        "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
-        "frontend/src/features/valentine/steps/MemoriesStep.tsx"
+        "frontend/src/features/valentine/steps/FinalQuestionStep.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -34,13 +33,13 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-31"
+        "REQ-45"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-frontend-deployment-checklist-md-so-the-post-deployment-verification-section-references-the-new-memories-image-asset-paths-instead-of-the-old-ones",
-      "featureTitle": "Update `frontend/DEPLOYMENT_CHECKLIST.md` so the post-deployment verification section references the new Memories image asset paths instead of the old ones.",
+      "featureId": "feature-update-frontend-deployment-checklist-md-to-reflect-the-new-no-button-behavior-no-movement-on-hover-on-click-it-shows-the-updated-message",
+      "featureTitle": "Update `frontend/DEPLOYMENT_CHECKLIST.md` to reflect the new NO button behavior (no movement on hover; on click it shows the updated message).",
       "files": [
         "frontend/DEPLOYMENT_CHECKLIST.md"
       ],
@@ -52,7 +51,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-32"
+        "REQ-46"
       ],
       "confidence": "high"
     }

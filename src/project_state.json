@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 35,
+  "projectStateVersion": 47,
   "summary": "Build a romantic multi-page Valentine proposal website (single HTML/CSS/JS) with animated hearts, memory photo section, and interactive YES/NO buttons with confetti celebration.",
   "architectural_notes": [
     "Implement as a single static HTML file with embedded CSS and vanilla JS controlling page navigation and animations (floating hearts via interval, confetti on YES).",
@@ -11,7 +11,6 @@
     "Deployment failed; user requested to undo the last step and redeploy."
   ],
   "isFixRequest": false,
-  "imageRequirements": "## Edit Images\n- Generate new non-stock romantic memory-style image, warm tones, subtle bokeh, no text (memory-1.dim_300x200.jpg > memory-1-v2.dim_300x200.jpg)\n- Generate new non-stock romantic memory-style image, warm tones, different scene from the first, no text (memory-2.dim_300x200.jpg > memory-2-v2.dim_300x200.jpg)\n- Generate new non-stock romantic memory-style image, warm tones, different scene from the first two, no text (memory-3.dim_300x200.jpg > memory-3-v2.dim_300x200.jpg)",
   "existing_features": [
     {
       "id": "feature-create-a-single-page-react-view-that-reproduces-the-provided-5-step-valentine-proposal-flow-using-in-app-state-no-full-page-reloads-page-1-attention-page-2-hello-page-3-memories-page-4-letter-page-5-valentine-question-only-one-page-step-is-visible-at-a-time-with-clear-navigation-via-the-same-button-actions-as-the-html-e-g-enter-at-your-own-risk-continue-etc-all-user-facing-text-must-be-in-english-matching-the-provided-copy",
@@ -244,6 +243,118 @@
         "REQ-32"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-page-3-memories-first-memory-card-caption-the-day-we-started-talking-and-i-lost-my-peace-to-use-the-newly-uploaded-image-screenshot-20230820-t-2-jpg-as-its-static-bundled-asset-while-keeping-the-existing-layout-captions-and-behavior-unchanged-no-upload-controls-still-3-memory-cards",
+      "title": "Update the Page 3 (Memories) first memory card (caption: \"📸 The day we started talking and I lost my peace 😌\") to use the newly uploaded image \"Screenshot_20230820- t-2.jpg\" as its static bundled asset, while keeping the existing layout, captions, and behavior unchanged (no upload controls, still 3 memory cards).",
+      "reqIds": [
+        "REQ-33"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-documentation-so-the-post-deployment-verification-section-references-the-new-memory-1-static-asset-path-used-by-the-memories-step",
+      "title": "Update frontend documentation so the post-deployment verification section references the new Memory 1 static asset path used by the Memories step.",
+      "reqIds": [
+        "REQ-34"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-page-3-memories-second-memory-card-image-caption-can-t-keep-my-eyes-off-of-you-with-the-newly-uploaded-image-file-img-20251118-wa0088-1-jpg-by-adding-a-new-bundled-static-asset-in-frontend-public-assets-generated-300x200-jpg-and-updating-frontend-src-features-valentine-steps-memoriesstep-tsx-to-reference-the-new-asset-path-for-memory-2",
+      "title": "Replace the Page 3 (Memories) second memory card image (caption: \"📸 Can't keep my eyes off of you 👀\") with the newly uploaded image file `IMG-20251118-WA0088-1.jpg` by adding a new bundled static asset in `frontend/public/assets/generated/` (300x200 JPG) and updating `frontend/src/features/valentine/steps/MemoriesStep.tsx` to reference the new asset path for Memory 2.",
+      "reqIds": [
+        "REQ-35"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-post-deployment-verification-section-so-the-memory-2-asset-path-matches-the-new-bundled-memory-2-image-filename-used-by-the-memories-step",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` Post-Deployment Verification section so the Memory 2 asset path matches the new bundled Memory 2 image filename used by the Memories step.",
+      "reqIds": [
+        "REQ-36"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-new-cropped-adjusted-versions-of-the-two-inserted-memories-photos-so-the-faces-are-clearly-visible-in-both-images-while-keeping-the-images-at-300x200-and-in-jpg-format",
+      "title": "Create new cropped/adjusted versions of the two inserted Memories photos so the faces are clearly visible in both images while keeping the images at 300x200 and in JPG format.",
+      "reqIds": [
+        "REQ-37"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-memories-step-to-use-the-newly-adjusted-cropped-image-asset-filenames-for-memory-1-and-memory-2-replacing-the-current-assets-generated-memory-1-v3-dim-300x200-jpg-and-assets-generated-memory-2-v3-dim-300x200-jpg-references-without-changing-captions-layout-or-behavior",
+      "title": "Update the Memories step to use the newly adjusted/cropped image asset filenames for Memory 1 and Memory 2 (replacing the current `/assets/generated/memory-1-v3.dim_300x200.jpg` and `/assets/generated/memory-2-v3.dim_300x200.jpg` references), without changing captions, layout, or behavior.",
+      "reqIds": [
+        "REQ-38"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-post-deployment-verification-section-so-the-listed-memory-1-and-memory-2-asset-paths-match-the-newly-adjusted-cropped-filenames-used-by-the-memories-step",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` Post-Deployment Verification section so the listed Memory 1 and Memory 2 asset paths match the newly adjusted/cropped filenames used by the Memories step.",
+      "reqIds": [
+        "REQ-39"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-user-uploaded-photo-img-20251118-wa0005-jpg-as-a-bundled-static-asset-cropped-fit-to-300x200-jpg-in-frontend-public-assets-generated-and-use-it-as-the-memory-3-image-for-the-memories-step-card-whose-caption-is-exactly-that-smile-illegal-honestly",
+      "title": "Add the user-uploaded photo `IMG-20251118-WA0005.jpg` as a bundled static asset (cropped/fit to 300x200 JPG) in `frontend/public/assets/generated/`, and use it as the Memory 3 image for the Memories step card whose caption is exactly: \"📸 That smile… illegal honestly 💕\".",
+      "reqIds": [
+        "REQ-40"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-post-deployment-verification-so-the-listed-memory-3-asset-path-matches-the-new-bundled-memory-3-image-filename-used-by-the-memories-step",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` Post-Deployment Verification so the listed Memory 3 asset path matches the new bundled Memory 3 image filename used by the Memories step.",
+      "reqIds": [
+        "REQ-41"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-all-three-page-3-memories-photos-with-new-bundled-static-image-assets-300x200-jpg-and-update-the-permanent-images-list-in-frontend-src-features-valentine-steps-memoriesstep-tsx-to-reference-the-new-asset-paths-without-changing-the-existing-layout-captions-or-behavior",
+      "title": "Replace all three Page 3 (Memories) photos with new bundled static image assets (300x200 JPG) and update the `PERMANENT_IMAGES` list in `frontend/src/features/valentine/steps/MemoriesStep.tsx` to reference the new asset paths, without changing the existing layout, captions, or behavior.",
+      "reqIds": [
+        "REQ-42"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-post-deployment-verification-section-so-the-listed-memory-1-2-3-asset-paths-match-the-new-page-3-memories-bundled-image-filenames",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` Post-Deployment Verification section so the listed Memory 1/2/3 asset paths match the new Page 3 (Memories) bundled image filenames.",
+      "reqIds": [
+        "REQ-43"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-the-valentine-proposal-flow-final-step-page-5-remove-the-no-button-run-away-move-on-hover-behavior-so-that-hovering-the-no-button-does-not-change-its-position-and-it-remains-in-the-normal-button-layout",
+      "title": "In the Valentine proposal flow Final step (Page 5), remove the NO button “run away/move on hover” behavior so that hovering the NO button does not change its position and it remains in the normal button layout.",
+      "reqIds": [
+        "REQ-44"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-the-valentine-proposal-flow-final-step-page-5-update-the-no-button-click-behavior-so-it-displays-exactly-this-response-text-the-button-is-broken-try-the-green-one-instead",
+      "title": "In the Valentine proposal flow Final step (Page 5), update the NO button click behavior so it displays exactly this response text: \"The button is broken, try the green one instead 😏💚\".",
+      "reqIds": [
+        "REQ-45"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-to-reflect-the-new-no-button-behavior-no-movement-on-hover-on-click-it-shows-the-updated-message",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` to reflect the new NO button behavior (no movement on hover; on click it shows the updated message).",
+      "reqIds": [
+        "REQ-46"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -340,6 +451,30 @@
     {
       "id": "AR-17",
       "summary": "Remove/replace all remaining stock/placeholder images in the site (e.g., Memories cards) with non-stock images provided/selected by the user, keeping existing layout/behavior unchanged.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "In the Memories section, replace the image for the card/caption \"the day we started talking and i lost my peace\" with the image used in the card immediately above it (make them match).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Adjust/crop the inserted photos so the faces are clearly visible in both images used in the site (e.g., Memories images).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "In the Memories section, replace the image for the card with caption \"That smile... illegal honestly\" with the image used in the memory card immediately above it (make them match).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Update final step (Page 5) NO button behavior: remove the 'run away/move on hover' interaction and on NO click display the message \"The button is broken, try the green one instead 😏💚\".",
       "reqIds": [],
       "status": "pending"
     }

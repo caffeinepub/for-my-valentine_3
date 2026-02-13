@@ -16,7 +16,7 @@
 
 ### Interactive Features
 - [x] YES button triggers confetti and success message
-- [x] NO button moves on hover and shows alternative message
+- [x] NO button shows playful message when clicked
 - [x] Floating hearts animation runs smoothly in background
 
 ### Responsive Design
@@ -34,12 +34,12 @@ After deployment completes:
 1. Open the Preview and verify the page loads without errors
 2. Click through all 5 steps of the Valentine proposal flow
 3. Verify the Memories step displays the three memory photos from static assets:
-   - Memory 1: `/assets/generated/memory-1-v2.dim_300x200.jpg`
-   - Memory 2: `/assets/generated/memory-2-v2.dim_300x200.jpg`
-   - Memory 3: `/assets/generated/memory-3-v2.dim_300x200.jpg`
+   - Memory 1: `/assets/generated/memory-1-v5.dim_300x200.jpg`
+   - Memory 2: `/assets/generated/memory-2-v5.dim_300x200.jpg`
+   - Memory 3: `/assets/generated/memory-3-v4.dim_300x200.jpg`
 4. Verify photos load correctly after a hard refresh (static assets, no localStorage)
 5. Verify YES button shows confetti
-6. Verify NO button moves on hover
+6. Verify NO button displays message: "The button is broken, try the green one instead 😏💚"
 7. Check that the final heading reads exactly "So Shruti ❤️...."
 
 ## Success Criteria
