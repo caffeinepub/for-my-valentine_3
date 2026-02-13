@@ -1,14 +1,17 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 21,
+  "projectStateVersion": 35,
   "summary": "Build a romantic multi-page Valentine proposal website (single HTML/CSS/JS) with animated hearts, memory photo section, and interactive YES/NO buttons with confetti celebration.",
   "architectural_notes": [
-    "Implement as a single static HTML file with embedded CSS and vanilla JS controlling page navigation and animations (floating hearts via interval, confetti on YES)."
+    "Implement as a single static HTML file with embedded CSS and vanilla JS controlling page navigation and animations (floating hearts via interval, confetti on YES).",
+    "Remove the Memories image upload UI/logic; use fixed (hardcoded/configured) image sources for the memory cards.",
+    "Treat the currently selected/user-added Memories images as the new fixed static assets so they persist across reloads (no upload/localStorage-based replacement)."
   ],
   "known_issues": [
     "Deployment failed; user requested to undo the last step and redeploy."
   ],
-  "isFixRequest": true,
+  "isFixRequest": false,
+  "imageRequirements": "## Edit Images\n- Generate new non-stock romantic memory-style image, warm tones, subtle bokeh, no text (memory-1.dim_300x200.jpg > memory-1-v2.dim_300x200.jpg)\n- Generate new non-stock romantic memory-style image, warm tones, different scene from the first, no text (memory-2.dim_300x200.jpg > memory-2-v2.dim_300x200.jpg)\n- Generate new non-stock romantic memory-style image, warm tones, different scene from the first two, no text (memory-3.dim_300x200.jpg > memory-3-v2.dim_300x200.jpg)",
   "existing_features": [
     {
       "id": "feature-create-a-single-page-react-view-that-reproduces-the-provided-5-step-valentine-proposal-flow-using-in-app-state-no-full-page-reloads-page-1-attention-page-2-hello-page-3-memories-page-4-letter-page-5-valentine-question-only-one-page-step-is-visible-at-a-time-with-clear-navigation-via-the-same-button-actions-as-the-html-e-g-enter-at-your-own-risk-continue-etc-all-user-facing-text-must-be-in-english-matching-the-provided-copy",
@@ -121,6 +124,126 @@
         "REQ-15"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-remove-the-memories-step-page-3-ability-to-add-replace-images-via-local-file-upload-the-ui-must-no-longer-show-an-upload-image-control-file-input-or-reset-option-for-any-memory-card",
+      "title": "Remove the Memories step (Page 3) ability to add/replace images via local file upload. The UI must no longer show an \"Upload Image\" control, file input, or \"Reset\" option for any memory card.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-placeholder-persisted-memories-images-implementation-with-permanently-set-static-images-for-the-3-memory-cards-bundled-with-the-frontend-the-three-cards-must-render-these-fixed-images-every-time-no-localstorage-persistence-for-memory-images",
+      "title": "Replace the current placeholder/persisted Memories images implementation with permanently-set static images for the 3 memory cards (bundled with the frontend). The three cards must render these fixed images every time (no localStorage persistence for memory images).",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-any-related-documentation-checklists-to-reflect-that-the-memories-step-no-longer-supports-image-upload-persistence-via-localstorage",
+      "title": "Update any related documentation/checklists to reflect that the Memories step no longer supports image upload/persistence via localStorage.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-page-3-memories-section-to-use-the-3-user-provided-uploaded-photos-in-sequential-order-memory-1-then-memory-2-then-memory-3-while-keeping-the-existing-ui-layout-captions-and-no-upload-controls-behavior-unchanged",
+      "title": "Update the Page 3 (Memories) section to use the 3 user-provided uploaded photos in sequential order (Memory 1, then Memory 2, then Memory 3) while keeping the existing UI layout, captions, and no-upload-controls behavior unchanged.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-page-3-memories-replace-the-current-memory-2-static-image-asset-with-the-newly-uploaded-photo-screenshot-20230820-t-1-jpg-the-ui-layout-captions-and-behavior-must-remain-unchanged-no-upload-controls-still-3-memory-cards",
+      "title": "On Page 3 (Memories), replace the current Memory 2 static image asset with the newly uploaded photo \"Screenshot_20230820- t-1.jpg\". The UI layout, captions, and behavior must remain unchanged (no upload controls; still 3 memory cards).",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-any-checklist-documentation-references-for-the-memories-step-photos-so-they-reflect-that-memory-2-now-uses-the-newly-uploaded-photo-screenshot-20230820-t-1-jpg",
+      "title": "Update any checklist/documentation references for the Memories step photos so they reflect that Memory 2 now uses the newly uploaded photo \"Screenshot_20230820- t-1.jpg\".",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-support-for-user-customizable-images-for-the-3-memories-cards-step-3-by-letting-the-user-upload-replace-each-image-locally-in-the-browser",
+      "title": "Add support for user-customizable images for the 3 Memories cards (Step 3) by letting the user upload/replace each image locally in the browser.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-persist-the-user-selected-memories-images-in-the-browser-so-they-are-restored-after-a-page-refresh-and-provide-a-per-card-reset-action-to-revert-back-to-the-default-bundled-static-image-for-that-card",
+      "title": "Persist the user-selected Memories images in the browser so they are restored after a page refresh, and provide a per-card reset action to revert back to the default bundled static image for that card.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-currently-empty-memories-images-hook-file-so-the-memories-step-can-read-write-reset-the-three-customizable-images-in-a-centralized-way",
+      "title": "Implement the currently-empty memories images hook file so the Memories step can read/write/reset the three customizable images in a centralized way.",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-page-3-memories-images-permanent-by-removing-the-in-ui-image-upload-change-reset-controls-and-ensuring-the-three-memory-cards-always-render-the-bundled-static-images-no-localstorage-persistence-and-no-runtime-replacement",
+      "title": "Make the Page 3 (Memories) images permanent by removing the in-UI image upload/change/reset controls and ensuring the three memory cards always render the bundled static images (no localStorage persistence and no runtime replacement).",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-disable-any-memories-image-localstorage-read-write-behavior-so-previously-stored-custom-images-cannot-override-the-permanent-bundled-images",
+      "title": "Remove or disable any Memories image localStorage read/write behavior so previously stored custom images cannot override the permanent bundled images.",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-deployment-checklist-documentation-to-reflect-the-new-memories-images-remove-references-to-the-prior-specific-photos-and-describe-verifiably-identify-the-newly-provided-images",
+      "title": "Update the deployment checklist documentation to reflect the new Memories images (remove references to the prior specific photos and describe/verifiably identify the newly provided images).",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-three-current-memories-step-3-static-images-with-new-non-stock-images-by-generating-three-new-300x200-jpg-assets-and-updating-the-memories-step-to-reference-the-new-asset-paths-while-keeping-the-existing-layout-captions-and-behavior-unchanged",
+      "title": "Replace the three current Memories (Step 3) static images with new non-stock images by generating three new 300x200 JPG assets and updating the Memories step to reference the new asset paths, while keeping the existing layout, captions, and behavior unchanged.",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-the-frontend-for-any-remaining-placeholder-stock-image-references-including-the-historical-https-via-placeholder-com-300x200-memory-urls-and-ensure-no-ui-visible-images-are-still-using-placeholder-stock-sources",
+      "title": "Audit the frontend for any remaining placeholder/stock-image references (including the historical `https://via.placeholder.com/300x200` memory URLs) and ensure no UI-visible images are still using placeholder/stock sources.",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-so-the-post-deployment-verification-section-references-the-new-memories-image-asset-paths-instead-of-the-old-ones",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` so the post-deployment verification section references the new Memories image asset paths instead of the old ones.",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -133,12 +256,6 @@
     {
       "id": "AR-2",
       "summary": "Update the Memories step (Memory 1 card) to use the user-provided photo instead of the current placeholder image.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Allow adding/replacing images in the Memories section (e.g., upload/select images for the memory cards instead of placeholders).",
       "reqIds": [],
       "status": "pending"
     },
@@ -174,6 +291,56 @@
       "reqIds": [
         "REQ-16"
       ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Remove the Memories image upload/add option and instead permanently use the user-provided images in the Memories cards (no in-UI image replacement).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Update the Page 3 (Memories) photos to use the user-provided 3 images in sequential order (Memory 1, then 2, then 3).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "On Page 3 (Memories), remove the current photo(s) and replace with a user-provided photo (user will supply the image).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Add support for customizable user-selected images for the Memories section (allow the user to provide/replace their own images).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Make the currently added Memories images permanent so they always display (bundled/static) rather than temporary/replaced via upload.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Replace the current stock/placeholder images in the project (e.g., the Memories cards) with non-stock images provided/selected by the user while keeping the existing layout/behavior unchanged.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Replace the current stock/static images used by the Page 3 (Memories) cards with new non-stock images, while keeping the existing UI layout, captions, and behavior unchanged.",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Remove/replace all remaining stock/placeholder images in the site (e.g., Memories cards) with non-stock images provided/selected by the user, keeping existing layout/behavior unchanged.",
+      "reqIds": [],
       "status": "pending"
     }
   ],

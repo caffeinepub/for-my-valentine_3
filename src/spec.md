@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Revert the most recent change that caused the current deployment failure and redeploy so the Preview loads successfully again.
+**Goal:** Remove any stock/placeholder imagery from the Memories (Step 3) experience by replacing the current static memory images with new non-stock bundled assets.
 
 **Planned changes:**
-- Identify and revert the latest product/code change responsible for the build/deploy error.
-- Redeploy and verify the Valentine proposal flow works end-to-end across all 5 steps.
-- Confirm the final step heading renders exactly as: "So Shruti ❤️...." and that the Preview has no console errors/warnings during normal interaction.
+- Replace the three current Memories (Step 3) static image assets with three newly generated non-stock 300x200 JPGs and update the Memories step to reference the new asset paths, keeping layout, captions, and behavior unchanged.
+- Audit the frontend for any remaining placeholder/stock image references (including `https://via.placeholder.com/300x200`) and remove/replace them so all UI-visible images in the Valentine flow come from bundled static assets.
+- Update `frontend/DEPLOYMENT_CHECKLIST.md` post-deployment verification section to reference the new Memories image asset paths.
 
-**User-visible outcome:** The app deploys without errors, the live Preview loads successfully, and users can navigate the full 5-step Valentine proposal flow to the final step with the correct heading displayed.
+**User-visible outcome:** The Memories step looks and behaves the same (same 3 cards, captions, and layout), but uses new non-stock images that load from bundled assets and remain consistent across refreshes, with no placeholder/stock images visible anywhere in the Valentine flow.

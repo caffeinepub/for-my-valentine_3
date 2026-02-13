@@ -1,28 +1,71 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Revert breaking frontend change to restore successful deployment and Valentine flow",
+  "title": "Replace Memories stock images with newly generated non-stock assets",
   "requirements": [
     {
-      "id": "REQ-16",
-      "summary": "Revert the latest breaking change so the Preview deploys successfully and the 5-step Valentine proposal flow works end-to-end without console issues.",
+      "id": "REQ-30",
+      "summary": "Generate three new 300x200 JPG non-stock images and update MemoriesStep to reference them while keeping layout, captions, and behavior unchanged.",
       "acceptanceCriteria": [
-        "Deployment completes successfully with no build/deploy errors.",
-        "The Preview loads successfully.",
-        "The Valentine proposal flow is navigable through all 5 steps end-to-end.",
-        "The final step heading renders and reads exactly \"So Shruti ❤️....\".",
-        "No console errors or warnings are present in the Preview during normal interaction."
+        "MemoriesStep renders 3 cards with the same captions and layout as before.",
+        "The images used in MemoriesStep are NOT the current files `/assets/generated/memory-1.dim_300x200.jpg`, `/assets/generated/memory-2.dim_300x200.jpg`, `/assets/generated/memory-3.dim_300x200.jpg` and instead use newly generated non-stock assets.",
+        "All three images load correctly in the browser and remain static across refreshes (no upload UI and no localStorage-based overrides)."
       ],
       "file_operations": [
         {
+          "path": "frontend/public/assets/generated/memory-1-v2.dim_300x200.jpg",
+          "operation": "create",
+          "description": "Add newly generated non-stock JPG asset (300x200) per imageRequirements edit: memory-1.dim_300x200.jpg > memory-1-v2.dim_300x200.jpg."
+        },
+        {
+          "path": "frontend/public/assets/generated/memory-2-v2.dim_300x200.jpg",
+          "operation": "create",
+          "description": "Add newly generated non-stock JPG asset (300x200) per imageRequirements edit: memory-2.dim_300x200.jpg > memory-2-v2.dim_300x200.jpg."
+        },
+        {
+          "path": "frontend/public/assets/generated/memory-3-v2.dim_300x200.jpg",
+          "operation": "create",
+          "description": "Add newly generated non-stock JPG asset (300x200) per imageRequirements edit: memory-3.dim_300x200.jpg > memory-3-v2.dim_300x200.jpg."
+        },
+        {
           "path": "frontend/src/features/valentine/steps/MemoriesStep.tsx",
           "operation": "modify",
-          "description": "Revert/remove the recent change that introduces the current deployment failure (e.g., remove the new icon-library import/usage) while keeping the Memories step UI and behavior intact. Continue using the shadcn-ui Button component for actions; verify the component's usage instructions before implementing."
+          "description": "Update the static PERMANENT_IMAGES paths to use `/assets/generated/memory-1-v2.dim_300x200.jpg`, `/assets/generated/memory-2-v2.dim_300x200.jpg`, and `/assets/generated/memory-3-v2.dim_300x200.jpg` while keeping existing captions array, card structure, layout classes, and button behavior unchanged."
+        }
+      ]
+    },
+    {
+      "id": "REQ-31",
+      "summary": "Audit and remove any remaining placeholder/stock-image references, ensuring Valentine flow images come from bundled static assets only.",
+      "acceptanceCriteria": [
+        "No references to `via.placeholder.com/300x200` remain in the frontend codebase.",
+        "All UI-visible images used by the Valentine flow are loaded from bundled static assets (no external placeholder/stock URLs)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
+          "operation": "modify",
+          "description": "Update any legacy/default Memories image paths to match the new bundled static assets (`/assets/generated/memory-1-v2.dim_300x200.jpg`, `/assets/generated/memory-2-v2.dim_300x200.jpg`, `/assets/generated/memory-3-v2.dim_300x200.jpg`) and ensure no placeholder/stock URL references (including via.placeholder.com/300x200) remain in this compatibility hook."
         },
+        {
+          "path": "frontend/src/features/valentine/steps/MemoriesStep.tsx",
+          "operation": "modify",
+          "description": "Re-check the MemoriesStep for any accidental reintroduction of placeholder/stock URLs and ensure only the new bundled static asset paths are referenced (no external URLs)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-32",
+      "summary": "Update deployment checklist to reference the new Memories image asset paths.",
+      "acceptanceCriteria": [
+        "The checklist lists the three updated Memories image paths that are actually used by the app.",
+        "Checklist text remains in English and the rest of the checklist remains unchanged except where required for the updated image paths."
+      ],
+      "file_operations": [
         {
           "path": "frontend/DEPLOYMENT_CHECKLIST.md",
           "operation": "modify",
-          "description": "Update/confirm the checklist items relevant to the reverted change (Memories step rendering, upload/reset interactions, no console errors) to match the restored working implementation."
+          "description": "In the Post-Deployment Verification section, replace the three Memories image paths with the new ones actually used by the app: `/assets/generated/memory-1-v2.dim_300x200.jpg`, `/assets/generated/memory-2-v2.dim_300x200.jpg`, `/assets/generated/memory-3-v2.dim_300x200.jpg`, leaving all other checklist content unchanged."
         }
       ]
     }

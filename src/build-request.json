@@ -1,40 +1,86 @@
 {
   "kind": "build_request",
-  "title": "Undo the last change that caused deployment failure and redeploy",
+  "title": "Remove stock images by replacing Memories photos with new non-stock assets",
   "priority": "high",
   "requirements": [
     {
-      "id": "REQ-16",
-      "text": "Undo (revert) the most recent product/code change that triggered the current deployment error, then redeploy the application so the live Preview loads successfully without deployment errors.",
-      "target": "both",
+      "id": "REQ-30",
+      "text": "Replace the three current Memories (Step 3) static images with new non-stock images by generating three new 300x200 JPG assets and updating the Memories step to reference the new asset paths, while keeping the existing layout, captions, and behavior unchanged.",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-4"
         ],
         "quotes": [
-          "undo the action and redeploy it"
+          "remove the stock images now"
         ]
       },
       "acceptanceCriteria": [
-        "Deployment completes successfully with no build/deploy errors.",
-        "The Preview loads successfully.",
-        "The Valentine proposal flow is navigable through all 5 steps end-to-end.",
-        "The final step heading renders and reads exactly \"So Shruti ❤️....\".",
-        "No console errors or warnings are present in the Preview during normal interaction."
+        "MemoriesStep renders 3 cards with the same captions and layout as before.",
+        "The images used in MemoriesStep are NOT the current files `/assets/generated/memory-1.dim_300x200.jpg`, `/assets/generated/memory-2.dim_300x200.jpg`, `/assets/generated/memory-3.dim_300x200.jpg` and instead use newly generated non-stock assets.",
+        "All three images load correctly in the browser and remain static across refreshes (no upload UI and no localStorage-based overrides)."
+      ]
+    },
+    {
+      "id": "REQ-31",
+      "text": "Audit the frontend for any remaining placeholder/stock-image references (including the historical `https://via.placeholder.com/300x200` memory URLs) and ensure no UI-visible images are still using placeholder/stock sources.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "remove the stock images now"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No references to `via.placeholder.com/300x200` remain in the frontend codebase.",
+        "All UI-visible images used by the Valentine flow are loaded from bundled static assets (no external placeholder/stock URLs)."
+      ]
+    },
+    {
+      "id": "REQ-32",
+      "text": "Update `frontend/DEPLOYMENT_CHECKLIST.md` so the post-deployment verification section references the new Memories image asset paths instead of the old ones.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "remove the stock images now"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The checklist lists the three updated Memories image paths that are actually used by the app.",
+        "Checklist text remains in English and the rest of the checklist remains unchanged except where required for the updated image paths."
       ]
     }
   ],
   "constraints": [
-    "Keep the backend as a single Motoko actor in backend/main.mo; only add migration.mo if state schema changes require it.",
-    "Do not modify files under frontend/src/components/ui or any paths listed as immutable (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui).",
-    "All user-facing text must be in English."
+    "Do not change the 5-step navigation, step order, captions, or interactive behaviors (floating hearts, confetti, evasive NO).",
+    "Do not reintroduce any Memories image upload UI or localStorage-based image replacement behavior.",
+    "Do not modify files under `frontend/src/components/ui` or other immutable paths listed in SYSTEM_CONTEXT."
   ],
   "nonGoals": [
-    "Adding new features or changing the Valentine proposal content beyond what is necessary to revert the breaking change and restore successful deployment.",
-    "Introducing new backend persistence or external services/integrations."
+    "Changing any user-facing copy beyond updating the deployment checklist image path entries.",
+    "Adding new backend functionality or persistence for images."
   ],
   "imageRequirements": {
     "required": [],
-    "edits": []
+    "edits": [
+      "Generate new non-stock romantic memory-style image, warm tones, subtle bokeh, no text (memory-1.dim_300x200.jpg > memory-1-v2.dim_300x200.jpg)",
+      "Generate new non-stock romantic memory-style image, warm tones, different scene from the first, no text (memory-2.dim_300x200.jpg > memory-2-v2.dim_300x200.jpg)",
+      "Generate new non-stock romantic memory-style image, warm tones, different scene from the first two, no text (memory-3.dim_300x200.jpg > memory-3-v2.dim_300x200.jpg)"
+    ]
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

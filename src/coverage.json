@@ -1,31 +1,69 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-13T19:44:05.204Z",
+  "generatedAt": "2026-02-13T20:59:39.729Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 1,
-    "implemented": 0,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
-        "id": "REQ-16",
-        "summary": "Undo (revert) the most recent product/code change that triggered the current deployment error, then redeploy the application so the live Preview loads successfully without deployment errors.",
-        "status": "missing",
+        "id": "REQ-30",
+        "summary": "Replace the three current Memories (Step 3) static images with new non-stock images by generating three new 300x200 JPG assets and updating the Memories step to reference the new asset paths, while keeping the existing layout, captions, and behavior unchanged.",
+        "status": "implemented",
         "plannedFiles": [
-          "frontend/src/features/valentine/steps/MemoriesStep.tsx",
+          "frontend/public/assets/generated/memory-1-v2.dim_300x200.jpg",
+          "frontend/public/assets/generated/memory-2-v2.dim_300x200.jpg",
+          "frontend/public/assets/generated/memory-3-v2.dim_300x200.jpg",
+          "frontend/src/features/valentine/steps/MemoriesStep.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/memory-1-v2.dim_300x200.jpg",
+          "frontend/public/assets/generated/memory-2-v2.dim_300x200.jpg",
+          "frontend/public/assets/generated/memory-3-v2.dim_300x200.jpg",
+          "frontend/src/features/valentine/steps/MemoriesStep.tsx"
+        ]
+      },
+      {
+        "id": "REQ-31",
+        "summary": "Audit the frontend for any remaining placeholder/stock-image references (including the historical `https://via.placeholder.com/300x200` memory URLs) and ensure no UI-visible images are still using placeholder/stock sources.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
+          "frontend/src/features/valentine/steps/MemoriesStep.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
+          "frontend/src/features/valentine/steps/MemoriesStep.tsx"
+        ]
+      },
+      {
+        "id": "REQ-32",
+        "summary": "Update `frontend/DEPLOYMENT_CHECKLIST.md` so the post-deployment verification section references the new Memories image asset paths instead of the old ones.",
+        "status": "implemented",
+        "plannedFiles": [
           "frontend/DEPLOYMENT_CHECKLIST.md"
         ],
-        "matchedFiles": []
+        "matchedFiles": [
+          "frontend/DEPLOYMENT_CHECKLIST.md"
+        ]
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
     "feature_evidence.json",
+    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/DEPLOYMENT_CHECKLIST.md",
+    "frontend/public/assets/generated/memory-1-v2.dim_300x200.jpg",
+    "frontend/public/assets/generated/memory-2-v2.dim_300x200.jpg",
+    "frontend/public/assets/generated/memory-3-v2.dim_300x200.jpg",
+    "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
+    "frontend/src/features/valentine/steps/MemoriesStep.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

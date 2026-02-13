@@ -1,4 +1,60 @@
 {
   "kind": "feature_evidence_report",
-  "features": []
+  "features": [
+    {
+      "featureId": "feature-replace-the-three-current-memories-step-3-static-images-with-new-non-stock-images-by-generating-three-new-300x200-jpg-assets-and-updating-the-memories-step-to-reference-the-new-asset-paths-while-keeping-the-existing-layout-captions-and-behavior-unchanged",
+      "featureTitle": "Replace the three current Memories (Step 3) static images with new non-stock images by generating three new 300x200 JPG assets and updating the Memories step to reference the new asset paths, while keeping the existing layout, captions, and behavior unchanged.",
+      "files": [
+        "frontend/src/features/valentine/steps/MemoriesStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-30"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-audit-the-frontend-for-any-remaining-placeholder-stock-image-references-including-the-historical-https-via-placeholder-com-300x200-memory-urls-and-ensure-no-ui-visible-images-are-still-using-placeholder-stock-sources",
+      "featureTitle": "Audit the frontend for any remaining placeholder/stock-image references (including the historical `https://via.placeholder.com/300x200` memory URLs) and ensure no UI-visible images are still using placeholder/stock sources.",
+      "files": [
+        "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
+        "frontend/src/features/valentine/steps/MemoriesStep.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-31"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-frontend-deployment-checklist-md-so-the-post-deployment-verification-section-references-the-new-memories-image-asset-paths-instead-of-the-old-ones",
+      "featureTitle": "Update `frontend/DEPLOYMENT_CHECKLIST.md` so the post-deployment verification section references the new Memories image asset paths instead of the old ones.",
+      "files": [
+        "frontend/DEPLOYMENT_CHECKLIST.md"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-32"
+      ],
+      "confidence": "high"
+    }
+  ]
 }

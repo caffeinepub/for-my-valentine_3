@@ -1,80 +1,36 @@
-import { useState, useEffect } from 'react';
+// This hook is no longer used but kept for backwards compatibility
+// All memory images are now hardcoded static assets in MemoriesStep.tsx
 
-const STORAGE_KEY = 'valentine-memories-images';
-const DEFAULT_PLACEHOLDER = 'https://via.placeholder.com/300x200';
+const DEFAULT_IMAGES = [
+  '/assets/generated/memory-1-v2.dim_300x200.jpg',
+  '/assets/generated/memory-2-v2.dim_300x200.jpg',
+  '/assets/generated/memory-3-v2.dim_300x200.jpg',
+];
 
 interface MemoryImage {
-  url: string;
+  src: string;
   isCustom: boolean;
 }
 
 export function useMemoriesImages() {
-  const [images, setImages] = useState<MemoryImage[]>([
-    { url: DEFAULT_PLACEHOLDER, isCustom: false },
-    { url: DEFAULT_PLACEHOLDER, isCustom: false },
-    { url: DEFAULT_PLACEHOLDER, isCustom: false },
-  ]);
+  // Return only the default static images, no localStorage interaction
+  const images: MemoryImage[] = DEFAULT_IMAGES.map((src) => ({
+    src,
+    isCustom: false,
+  }));
 
-  // Load images from localStorage on mount
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        // Validate the stored data
-        if (
-          Array.isArray(parsed) &&
-          parsed.length === 3 &&
-          parsed.every(
-            (item) =>
-              item &&
-              typeof item === 'object' &&
-              typeof item.url === 'string' &&
-              typeof item.isCustom === 'boolean'
-          )
-        ) {
-          setImages(parsed);
-        }
-      }
-    } catch (error) {
-      // If storage is corrupted or unreadable, fall back to defaults
-      console.warn('Failed to load stored images, using defaults:', error);
-    }
-  }, []);
-
-  // Persist images to localStorage whenever they change
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(images));
-    } catch (error) {
-      console.warn('Failed to persist images:', error);
-    }
-  }, [images]);
-
-  const updateImage = (index: number, file: File) => {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const dataUrl = reader.result as string;
-      setImages((prev) => {
-        const updated = [...prev];
-        updated[index] = { url: dataUrl, isCustom: true };
-        return updated;
-      });
-    };
-    reader.readAsDataURL(file);
+  // No-op functions for backwards compatibility
+  const uploadImage = async (): Promise<void> => {
+    // No longer supported
   };
 
-  const resetImage = (index: number) => {
-    setImages((prev) => {
-      const updated = [...prev];
-      updated[index] = { url: DEFAULT_PLACEHOLDER, isCustom: false };
-      return updated;
-    });
+  const resetImage = (): void => {
+    // No longer supported
   };
 
   return {
     images,
-    updateImage,
+    uploadImage,
     resetImage,
   };
 }
