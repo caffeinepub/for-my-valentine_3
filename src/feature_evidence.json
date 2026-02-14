@@ -2,10 +2,13 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-in-the-valentine-proposal-flow-final-step-page-5-remove-the-no-button-run-away-move-on-hover-behavior-so-that-hovering-the-no-button-does-not-change-its-position-and-it-remains-in-the-normal-button-layout",
-      "featureTitle": "In the Valentine proposal flow Final step (Page 5), remove the NO button “run away/move on hover” behavior so that hovering the NO button does not change its position and it remains in the normal button layout.",
+      "featureId": "feature-revert-roll-back-the-entire-application-codebase-and-bundled-static-assets-to-exactly-what-was-deployed-as-version-15-replacing-the-current-version-29-state",
+      "featureTitle": "Revert (roll back) the entire application codebase and bundled static assets to exactly what was deployed as Version 15, replacing the current Version 29+ state.",
       "files": [
-        "frontend/src/features/valentine/steps/FinalQuestionStep.tsx"
+        "frontend/DEPLOYMENT_CHECKLIST.md",
+        "frontend/index.html",
+        "frontend/src/features/valentine/hooks/memoriesImagesStorage.ts",
+        "frontend/src/features/valentine/hooks/useMemoriesImages.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,31 +18,13 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-44"
+        "REQ-66"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-in-the-valentine-proposal-flow-final-step-page-5-update-the-no-button-click-behavior-so-it-displays-exactly-this-response-text-the-button-is-broken-try-the-green-one-instead",
-      "featureTitle": "In the Valentine proposal flow Final step (Page 5), update the NO button click behavior so it displays exactly this response text: \"The button is broken, try the green one instead 😏💚\".",
-      "files": [
-        "frontend/src/features/valentine/steps/FinalQuestionStep.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-45"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-frontend-deployment-checklist-md-to-reflect-the-new-no-button-behavior-no-movement-on-hover-on-click-it-shows-the-updated-message",
-      "featureTitle": "Update `frontend/DEPLOYMENT_CHECKLIST.md` to reflect the new NO button behavior (no movement on hover; on click it shows the updated message).",
+      "featureId": "feature-after-rolling-back-to-version-15-redeploy-the-application-so-the-live-preview-reflects-version-15-behavior-and-renders-correctly-end-to-end",
+      "featureTitle": "After rolling back to Version 15, redeploy the application so the live Preview reflects Version 15 behavior and renders correctly end-to-end.",
       "files": [
         "frontend/DEPLOYMENT_CHECKLIST.md"
       ],
@@ -51,7 +36,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-46"
+        "REQ-67"
       ],
       "confidence": "high"
     }

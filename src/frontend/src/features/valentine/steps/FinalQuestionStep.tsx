@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import ConfettiOverlay from '../ConfettiOverlay';
+import FlowerShowerOverlay from '../FlowerShowerOverlay';
 
 export default function FinalQuestionStep() {
   const [response, setResponse] = useState('');
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showFlowers, setShowFlowers] = useState(false);
 
   const handleYesClick = () => {
     setResponse('I knew it 😌❤️\nBest decision of 2026.');
     setShowConfetti(true);
+    setShowFlowers(true);
   };
 
   const handleNoClick = () => {
@@ -44,6 +47,7 @@ export default function FinalQuestionStep() {
       )}
 
       {showConfetti && <ConfettiOverlay />}
+      {showFlowers && <FlowerShowerOverlay />}
     </div>
   );
 }

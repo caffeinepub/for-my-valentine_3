@@ -1,13 +1,23 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-13T21:35:41.816Z",
-  "summary": "REQ-44 and REQ-45 appear implemented in FinalQuestionStep: the NO button no longer has any hover-driven position logic and clicking NO sets the exact new message. REQ-46 is only partially implemented: the checklist confirms the click message but does not explicitly verify that NO no longer moves on hover. Additionally, changes to project_state.json and frontend-file-summaries.txt are not requested by the BuildRequest.",
+  "generatedAt": "2026-02-14T05:38:33.055Z",
+  "summary": "The diff does not demonstrate a rollback to an exact Version 15 snapshot, and it introduces/changes application behavior and files in ways that look unrelated to a pure V15 restore. Deployment/redeploy outcomes also cannot be verified from the provided code diff summary.",
   "missing_requirements": [
     {
-      "id": "REQ-46",
-      "requirement": "Update frontend/DEPLOYMENT_CHECKLIST.md to reflect the new NO button behavior (no movement on hover; on click it shows the updated message).",
-      "reason": "The checklist includes verification for the new NO click message, but it does not include a verification item that the NO button does not move on hover (and thus does not fully reflect the new hover behavior requirement).",
+      "id": "REQ-66",
+      "requirement": "Revert (roll back) the entire application codebase and bundled static assets to exactly what was deployed as Version 15, replacing the current Version 29+ state.",
+      "reason": "The diff shows only 7 modified files and does not provide evidence of restoring the full repository (frontend + backend + static assets) to an exact Version 15 snapshot. Additionally, backend/main.mo contains dictionary CRUD logic that appears to be a different application than the Valentine flow, which is inconsistent with an exact rollback to a prior known-working Valentine app state.",
+      "evidence": [
+        "backend/main.mo",
+        "project_state.json",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "id": "REQ-67",
+      "requirement": "After rolling back to Version 15, redeploy the application so the live Preview reflects Version 15 behavior and renders correctly end-to-end.",
+      "reason": "The diff summary contains no deployment configuration changes or evidence of an actual redeploy/preview verification beyond a checklist document. Redeploying and confirming Preview behavior cannot be established from these file modifications alone.",
       "evidence": [
         "frontend/DEPLOYMENT_CHECKLIST.md"
       ]
@@ -15,25 +25,44 @@
   ],
   "hallucinated_features": [
     {
-      "description": "Updated/modified project state tracking data (projectStateVersion bumped and summary/features metadata present) unrelated to the requested NO button behavior change.",
-      "reason": "BuildRequest only asks to change NO button behavior/copy and update the deployment checklist; it explicitly notes backend unchanged and does not request project state metadata updates.",
+      "description": "Backend changed to a dictionary/map actor with addWord/addTranslations/getTranslations/deleteWord APIs.",
+      "reason": "BuildRequest asked only for a rollback to Version 15 and explicitly disallowed new features beyond restoring V15; this backend functionality is not described as part of the rollback request.",
       "evidence": [
-        "project_state.json"
+        "backend/main.mo"
       ]
     },
     {
-      "description": "Modified repository file summary documentation (frontend-file-summaries.txt) including descriptions of NO button behavior.",
-      "reason": "BuildRequest does not request updating internal file summary documentation; only frontend behavior and DEPLOYMENT_CHECKLIST updates are requested.",
+      "description": "Added/updated localStorage-based memories image storage helper for persisting/loading/clearing memory card images as data URLs.",
+      "reason": "BuildRequest is strictly a rollback request and does not ask to add storage helpers or change how images are stored; this appears to be additional functionality beyond demonstrating a V15 restore.",
       "evidence": [
+        "frontend/src/features/valentine/hooks/memoriesImagesStorage.ts",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "description": "Introduced/updated a deployment checklist document asserting end-to-end flow verification details.",
+      "reason": "Documentation/checklists are not requested as part of the rollback requirements; the request is to revert to V15 and redeploy, not to add new docs.",
+      "evidence": [
+        "frontend/DEPLOYMENT_CHECKLIST.md"
+      ]
+    },
+    {
+      "description": "Changed useMemoriesImages hook behavior (notably described as deprecated and returning hardcoded static v2 image paths, with notes about removing localStorage/upload functionality).",
+      "reason": "The BuildRequest does not request refactoring/deprecating hooks or changing image sourcing logic—only restoring Version 15. This looks like an unrequested behavioral change unless it exactly matches V15 (which is not evidenced in the diff summary).",
+      "evidence": [
+        "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
         "frontend-file-summaries.txt"
       ]
     }
   ],
-  "confidence": 0.72,
+  "confidence": 0.62,
   "changed_files": [
+    "backend/main.mo",
     "frontend-file-summaries.txt",
     "frontend/DEPLOYMENT_CHECKLIST.md",
-    "frontend/src/features/valentine/steps/FinalQuestionStep.tsx",
+    "frontend/index.html",
+    "frontend/src/features/valentine/hooks/memoriesImagesStorage.ts",
+    "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
     "project_state.json"
   ]
 }

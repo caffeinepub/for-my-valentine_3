@@ -91,6 +91,22 @@
         animation: confetti-fall 4s linear forwards;
     }
 
+    /* Flower shower falling animation */
+    @keyframes flower-fall {
+        0% {
+            transform: translateY(-10vh) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(110vh) rotate(720deg);
+            opacity: 0.3;
+        }
+    }
+
+    .animate-flower-fall {
+        animation: flower-fall 4s ease-in forwards;
+    }
+
     /* Smooth fade in */
     @keyframes fade-in {
         from {

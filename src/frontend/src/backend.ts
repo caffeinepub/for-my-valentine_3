@@ -90,9 +90,69 @@ export class ExternalBlob {
     }
 }
 export interface backendInterface {
+    addTranslations(word: string, translations: Array<string>): Promise<void>;
+    addWord(word: string): Promise<void>;
+    deleteWord(word: string): Promise<void>;
+    getTranslations(): Promise<Array<[string, Array<string>]>>;
 }
 export class Backend implements backendInterface {
     constructor(private actor: ActorSubclass<_SERVICE>, private _uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, private _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, private processError?: (error: unknown) => never){}
+    async addTranslations(arg0: string, arg1: Array<string>): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.addTranslations(arg0, arg1);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.addTranslations(arg0, arg1);
+            return result;
+        }
+    }
+    async addWord(arg0: string): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.addWord(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.addWord(arg0);
+            return result;
+        }
+    }
+    async deleteWord(arg0: string): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.deleteWord(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.deleteWord(arg0);
+            return result;
+        }
+    }
+    async getTranslations(): Promise<Array<[string, Array<string>]>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getTranslations();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getTranslations();
+            return result;
+        }
+    }
 }
 export interface CreateActorOptions {
     agent?: Agent;

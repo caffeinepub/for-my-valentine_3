@@ -11,9 +11,9 @@ const captions = [
 ];
 
 const PERMANENT_IMAGES = [
-  '/assets/generated/memory-1-v5.dim_300x200.jpg',
-  '/assets/generated/memory-2-v5.dim_300x200.jpg',
-  '/assets/generated/memory-3-v4.dim_300x200.jpg',
+  '/assets/generated/memory-1-user.dim_300x200.jpg',
+  '/assets/generated/memory-2-user.dim_300x200.jpg',
+  '/assets/generated/memory-3-user.dim_300x200.jpg',
 ];
 
 export default function MemoriesStep({ onNext }: MemoriesStepProps) {

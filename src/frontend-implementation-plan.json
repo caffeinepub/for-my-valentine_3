@@ -1,52 +1,152 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Final step NO button: stop hover movement and update click message",
+  "title": "Rollback frontend to Version 15 and restore Preview behavior",
   "requirements": [
     {
-      "id": "REQ-44",
-      "summary": "Remove the Final step (Page 5) NO button “run away/move on hover” behavior so it stays in the normal button row layout.",
+      "id": "REQ-66",
+      "summary": "Roll back the frontend code and bundled static assets to match Version 15 exactly, removing any post–Version 15 changes.",
       "acceptanceCriteria": [
-        "Hovering the NO button does not move it to a random position.",
-        "The NO button remains positioned normally within the YES/NO button row (no absolute positioning driven by hover).",
-        "No hover event handler is attached that changes NO button coordinates/state."
+        "The repository/app state matches the Version 15 snapshot (frontend + backend + static assets), with no remaining changes introduced after Version 15.",
+        "All builds succeed without errors using the Version 15 state.",
+        "The Preview loads successfully without runtime errors."
       ],
       "file_operations": [
         {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Replace current file contents with the Version 15 snapshot for the app root rendering (do not introduce new behavior beyond Version 15)."
+        },
+        {
+          "path": "frontend/src/features/valentine/ValentineProposalFlow.tsx",
+          "operation": "modify",
+          "description": "Replace current Valentine flow controller with the exact Version 15 implementation, including step ordering and any state/effects logic present in Version 15."
+        },
+        {
+          "path": "frontend/src/features/valentine/ValentineLayout.tsx",
+          "operation": "modify",
+          "description": "Restore the Version 15 layout wrapper (structure, classes, and animations) exactly as deployed in Version 15."
+        },
+        {
+          "path": "frontend/src/features/valentine/steps/AttentionStep.tsx",
+          "operation": "modify",
+          "description": "Restore Attention step UI/text and button behavior exactly as in Version 15 (no additional UI changes). Use existing shadcn-ui Button where already used by Version 15; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/valentine/steps/HelloStep.tsx",
+          "operation": "modify",
+          "description": "Restore Hello step UI/text and button behavior exactly as in Version 15. Use existing shadcn-ui Button where already used by Version 15; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/valentine/steps/MemoriesStep.tsx",
+          "operation": "modify",
+          "description": "Restore Memories step to Version 15 behavior and asset references. Ensure it references only Version 15 static assets under frontend/public/assets/generated/ and does not rely on post–Version 15 localStorage/persistence changes. Use existing shadcn-ui Button where already used by Version 15; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/valentine/steps/LetterStep.tsx",
+          "operation": "modify",
+          "description": "Restore Letter step UI/text and button behavior exactly as in Version 15. Use existing shadcn-ui Button where already used by Version 15; verify the component's usage instructions before implementing."
+        },
+        {
           "path": "frontend/src/features/valentine/steps/FinalQuestionStep.tsx",
           "operation": "modify",
-          "description": "Remove NO-button hover-driven movement logic by deleting the NO position state and hover handler, removing the onMouseEnter prop, and removing any style logic that switches the NO button into absolute positioning so it remains in the normal flex row layout."
+          "description": "Restore the final question step logic/UI and any overlays/effects wiring exactly as in Version 15, including response text and button behavior. Use existing shadcn-ui Button where already used by Version 15; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/valentine/ConfettiOverlay.tsx",
+          "operation": "modify",
+          "description": "Restore confetti overlay implementation to the Version 15 snapshot, including element creation/cleanup to avoid runtime errors or leaks."
+        },
+        {
+          "path": "frontend/src/features/valentine/FlowerShowerOverlay.tsx",
+          "operation": "modify",
+          "description": "Restore flower shower overlay implementation to the Version 15 snapshot, including element creation/cleanup to avoid runtime errors or leaks."
+        },
+        {
+          "path": "frontend/src/features/valentine/FloatingHeartsBackground.tsx",
+          "operation": "modify",
+          "description": "Restore floating hearts background implementation to the Version 15 snapshot, including spawn/cleanup behavior to avoid runtime errors or leaks."
+        },
+        {
+          "path": "frontend/src/features/valentine/hooks/memoriesImagesStorage.ts",
+          "operation": "delete",
+          "description": "Remove this file if it was introduced after Version 15 and is not present in the Version 15 snapshot, ensuring no remaining imports reference it."
+        },
+        {
+          "path": "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
+          "operation": "delete",
+          "description": "Remove this file if it was introduced after Version 15 and is not present in the Version 15 snapshot, ensuring no remaining imports reference it."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Restore the Version 15 Tailwind + theme variables + animation utilities exactly (including any custom keyframes/classes used by the Valentine flow)."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Restore the Version 15 HTML shell exactly (title/meta/script tags) to ensure the Preview renders the Version 15 app as deployed."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Restore Tailwind configuration to match Version 15 (content globs, theme extensions, plugins) so styles build without errors."
+        },
+        {
+          "path": "frontend/DEPLOYMENT_CHECKLIST.md",
+          "operation": "modify",
+          "description": "Revert the checklist document to the Version 15 snapshot to match the intended validation steps and expected texts/assets in that version."
+        },
+        {
+          "path": "frontend/public/assets/generated/memory-1-user.dim_300x200.jpg",
+          "operation": "modify",
+          "description": "Ensure this static asset matches the exact Version 15 deployed file (bytes/content) and is packaged in the frontend build."
+        },
+        {
+          "path": "frontend/public/assets/generated/memory-2-user.dim_300x200.jpg",
+          "operation": "modify",
+          "description": "Ensure this static asset matches the exact Version 15 deployed file (bytes/content) and is packaged in the frontend build."
+        },
+        {
+          "path": "frontend/public/assets/generated/memory-3-user.dim_300x200.jpg",
+          "operation": "modify",
+          "description": "Ensure this static asset matches the exact Version 15 deployed file (bytes/content) and is packaged in the frontend build."
+        },
+        {
+          "path": "frontend/public/assets/generated/memory-1-v2.dim_300x200.jpg",
+          "operation": "delete",
+          "description": "Delete if not part of Version 15 bundled static assets to ensure the repository matches Version 15 exactly."
+        },
+        {
+          "path": "frontend/public/assets/generated/memory-2-v2.dim_300x200.jpg",
+          "operation": "delete",
+          "description": "Delete if not part of Version 15 bundled static assets to ensure the repository matches Version 15 exactly."
+        },
+        {
+          "path": "frontend/public/assets/generated/memory-3-v2.dim_300x200.jpg",
+          "operation": "delete",
+          "description": "Delete if not part of Version 15 bundled static assets to ensure the repository matches Version 15 exactly."
         }
       ]
     },
     {
-      "id": "REQ-45",
-      "summary": "Update the Final step (Page 5) NO button click behavior to show the new response message text in the existing response area.",
+      "id": "REQ-67",
+      "summary": "After restoring Version 15, perform the frontend-side redeploy verification steps so Preview reflects Version 15 behavior end-to-end.",
       "acceptanceCriteria": [
-        "Clicking the NO button sets the response message to exactly: \"The button is broken, try the green one instead 😏💚\" (including emoji and punctuation).",
-        "The response message renders in the existing response area with the current styling (no new UI component required).",
-        "The YES button behavior remains unchanged: it still triggers confetti and shows the existing YES response text."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/features/valentine/steps/FinalQuestionStep.tsx",
-          "operation": "modify",
-          "description": "Change the NO button click handler to set the response state to exactly: \"The button is broken, try the green one instead 😏💚\"; keep the existing response rendering block and keep the YES button handler (confetti + existing YES response text) unchanged."
-        }
-      ]
-    },
-    {
-      "id": "REQ-46",
-      "summary": "Update the deployment checklist to reflect the new NO button behavior (no hover movement; new click message).",
-      "acceptanceCriteria": [
-        "The checklist no longer claims the NO button moves on hover.",
-        "The checklist includes verification that clicking NO shows: \"The button is broken, try the green one instead 😏💚\"."
+        "Deployment completes successfully.",
+        "Preview loads successfully.",
+        "User can click through the Valentine flow without the build/deploy failure encountered in the current version."
       ],
       "file_operations": [
         {
           "path": "frontend/DEPLOYMENT_CHECKLIST.md",
           "operation": "modify",
-          "description": "Update the Interactive Features and Post-Deployment Verification items to remove any mention of the NO button moving on hover, and add/replace verification text to confirm clicking NO displays exactly: \"The button is broken, try the green one instead 😏💚\"."
+          "description": "Update/confirm the redeploy and post-deploy verification steps are aligned with Version 15 expectations, including a complete click-through of the Valentine flow and verification that the three Version 15 memory assets load from frontend/public/assets/generated/ (no persistence assumptions beyond Version 15)."
+        },
+        {
+          "path": "frontend/src/features/valentine/ValentineProposalFlow.tsx",
+          "operation": "modify",
+          "description": "Add/restore any Version 15-safe runtime guards or flow wiring needed to prevent the current Preview runtime failure, strictly matching Version 15 behavior (no new features)."
         }
       ]
     }

@@ -1,43 +1,58 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-13T21:35:41.820Z",
+  "generatedAt": "2026-02-14T05:38:33.059Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 3,
+    "total": 2,
+    "implemented": 2,
     "items": [
       {
-        "id": "REQ-44",
-        "summary": "In the Valentine proposal flow Final step (Page 5), remove the NO button “run away/move on hover” behavior so that hovering the NO button does not change its position and it remains in the normal button layout.",
+        "id": "REQ-66",
+        "summary": "Revert (roll back) the entire application codebase and bundled static assets to exactly what was deployed as Version 15, replacing the current Version 29+ state.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/features/valentine/steps/FinalQuestionStep.tsx"
+          "frontend/src/App.tsx",
+          "frontend/src/features/valentine/ValentineProposalFlow.tsx",
+          "frontend/src/features/valentine/ValentineLayout.tsx",
+          "frontend/src/features/valentine/steps/AttentionStep.tsx",
+          "frontend/src/features/valentine/steps/HelloStep.tsx",
+          "frontend/src/features/valentine/steps/MemoriesStep.tsx",
+          "frontend/src/features/valentine/steps/LetterStep.tsx",
+          "frontend/src/features/valentine/steps/FinalQuestionStep.tsx",
+          "frontend/src/features/valentine/ConfettiOverlay.tsx",
+          "frontend/src/features/valentine/FlowerShowerOverlay.tsx",
+          "frontend/src/features/valentine/FloatingHeartsBackground.tsx",
+          "frontend/src/features/valentine/hooks/memoriesImagesStorage.ts",
+          "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
+          "frontend/src/index.css",
+          "frontend/index.html",
+          "frontend/tailwind.config.js",
+          "frontend/DEPLOYMENT_CHECKLIST.md",
+          "frontend/public/assets/generated/memory-1-user.dim_300x200.jpg",
+          "frontend/public/assets/generated/memory-2-user.dim_300x200.jpg",
+          "frontend/public/assets/generated/memory-3-user.dim_300x200.jpg",
+          "frontend/public/assets/generated/memory-1-v2.dim_300x200.jpg",
+          "frontend/public/assets/generated/memory-2-v2.dim_300x200.jpg",
+          "frontend/public/assets/generated/memory-3-v2.dim_300x200.jpg"
         ],
         "matchedFiles": [
-          "frontend/src/features/valentine/steps/FinalQuestionStep.tsx"
-        ]
-      },
-      {
-        "id": "REQ-45",
-        "summary": "In the Valentine proposal flow Final step (Page 5), update the NO button click behavior so it displays exactly this response text: \"The button is broken, try the green one instead 😏💚\".",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/features/valentine/steps/FinalQuestionStep.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/features/valentine/steps/FinalQuestionStep.tsx"
-        ]
-      },
-      {
-        "id": "REQ-46",
-        "summary": "Update `frontend/DEPLOYMENT_CHECKLIST.md` to reflect the new NO button behavior (no movement on hover; on click it shows the updated message).",
-        "status": "implemented",
-        "plannedFiles": [
+          "frontend/src/features/valentine/hooks/memoriesImagesStorage.ts",
+          "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
+          "frontend/index.html",
           "frontend/DEPLOYMENT_CHECKLIST.md"
+        ]
+      },
+      {
+        "id": "REQ-67",
+        "summary": "After rolling back to Version 15, redeploy the application so the live Preview reflects Version 15 behavior and renders correctly end-to-end.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/DEPLOYMENT_CHECKLIST.md",
+          "frontend/src/features/valentine/ValentineProposalFlow.tsx"
         ],
         "matchedFiles": [
           "frontend/DEPLOYMENT_CHECKLIST.md"
@@ -46,12 +61,19 @@
     ]
   },
   "changedFiles": [
+    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
     "frontend/DEPLOYMENT_CHECKLIST.md",
-    "frontend/src/features/valentine/steps/FinalQuestionStep.tsx",
+    "frontend/index.html",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/features/valentine/hooks/memoriesImagesStorage.ts",
+    "frontend/src/features/valentine/hooks/useMemoriesImages.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

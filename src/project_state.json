@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 47,
+  "projectStateVersion": 63,
   "summary": "Build a romantic multi-page Valentine proposal website (single HTML/CSS/JS) with animated hearts, memory photo section, and interactive YES/NO buttons with confetti celebration.",
   "architectural_notes": [
     "Implement as a single static HTML file with embedded CSS and vanilla JS controlling page navigation and animations (floating hearts via interval, confetti on YES).",
@@ -8,9 +8,11 @@
     "Treat the currently selected/user-added Memories images as the new fixed static assets so they persist across reloads (no upload/localStorage-based replacement)."
   ],
   "known_issues": [
-    "Deployment failed; user requested to undo the last step and redeploy."
+    "Deployment failed; user requested to undo the last step and redeploy.",
+    "Attempt to generate/bundle the full project code ZIP failed (assistant asked user to retry).",
+    "Build failed after attempting to remove stock images (user requested to revert to version 15)."
   ],
-  "isFixRequest": false,
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-create-a-single-page-react-view-that-reproduces-the-provided-5-step-valentine-proposal-flow-using-in-app-state-no-full-page-reloads-page-1-attention-page-2-hello-page-3-memories-page-4-letter-page-5-valentine-question-only-one-page-step-is-visible-at-a-time-with-clear-navigation-via-the-same-button-actions-as-the-html-e-g-enter-at-your-own-risk-continue-etc-all-user-facing-text-must-be-in-english-matching-the-provided-copy",
@@ -355,6 +357,166 @@
         "REQ-46"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-on-the-valentine-proposal-flow-final-step-page-5-when-the-user-clicks-the-yes-button-display-a-visible-shower-of-flowers-celebration-effect-e-g-falling-flower-petals-flower-emojis-over-the-screen",
+      "title": "On the Valentine proposal flow Final step (Page 5), when the user clicks the YES button, display a visible \"shower of flowers\" celebration effect (e.g., falling flower petals/flower emojis) over the screen.",
+      "reqIds": [
+        "REQ-47"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-flower-shower-effect-as-a-reusable-overlay-component-in-the-valentine-feature-and-wire-it-into-frontend-src-features-valentine-steps-finalquestionstep-tsx-so-it-triggers-on-yes-click-alongside-the-existing-yes-behavior-response-text-and-current-confetti-unless-explicitly-replaced",
+      "title": "Implement the flower-shower effect as a reusable overlay component in the Valentine feature and wire it into `frontend/src/features/valentine/steps/FinalQuestionStep.tsx` so it triggers on YES click alongside the existing YES behavior (response text and current confetti) unless explicitly replaced.",
+      "reqIds": [
+        "REQ-48"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-to-include-verification-that-clicking-yes-on-step-5-shows-the-flower-shower-effect",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` to include verification that clicking YES on Step 5 shows the flower-shower effect.",
+      "reqIds": [
+        "REQ-49"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-bundled-static-image-asset-for-the-page-3-memories-memory-1-card-using-the-user-uploaded-file-rsz-1screenshot-20230820-093210-gallery-jpg-cropped-positioned-to-300x200-jpg-such-that-the-face-s-are-top-center-and-clearly-visible",
+      "title": "Create a new bundled static image asset for the Page 3 (Memories) Memory 1 card using the user-uploaded file `rsz_1screenshot_20230820-093210_gallery.jpg`, cropped/positioned to 300x200 JPG such that the face(s) are top-center and clearly visible.",
+      "reqIds": [
+        "REQ-50"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-page-3-memories-step-to-use-the-new-memory-1-asset-assets-generated-memory-1-v6-dim-300x200-jpg-for-the-card-whose-caption-is-exactly-the-day-we-started-talking-and-i-lost-my-peace-without-changing-the-existing-layout-captions-or-behavior",
+      "title": "Update the Page 3 (Memories) step to use the new Memory 1 asset (`/assets/generated/memory-1-v6.dim_300x200.jpg`) for the card whose caption is exactly: \"📸 The day we started talking and I lost my peace 😌\", without changing the existing layout, captions, or behavior.",
+      "reqIds": [
+        "REQ-51"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-post-deployment-verification-section-so-the-listed-memory-1-asset-path-matches-the-new-bundled-filename-used-by-the-memories-step",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` Post-Deployment Verification section so the listed Memory 1 asset path matches the new bundled filename used by the Memories step.",
+      "reqIds": [
+        "REQ-52"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-user-uploaded-image-file-rsz-1screenshot-20230820-093210-gallery-1-jpg-as-a-new-bundled-static-asset-in-frontend-public-assets-generated-cropped-positioned-to-300x200-jpg-so-the-face-s-are-top-center-and-clearly-visible",
+      "title": "Add the user-uploaded image file `rsz_1screenshot_20230820-093210_gallery (1).jpg` as a new bundled static asset in `frontend/public/assets/generated/`, cropped/positioned to 300x200 JPG so the face(s) are top-center and clearly visible.",
+      "reqIds": [
+        "REQ-53"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-page-3-memories-first-memory-card-caption-exactly-the-day-we-started-talking-and-i-lost-my-peace-to-use-the-new-static-asset-path-assets-generated-memory-1-v7-dim-300x200-jpg-without-changing-captions-layout-or-any-other-memory-images",
+      "title": "Update the Page 3 (Memories) first memory card (caption exactly: \"📸 The day we started talking and I lost my peace 😌\") to use the new static asset path `/assets/generated/memory-1-v7.dim_300x200.jpg`, without changing captions, layout, or any other memory images.",
+      "reqIds": [
+        "REQ-54"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-post-deployment-verification-section-so-the-listed-memory-1-asset-path-matches-assets-generated-memory-1-v7-dim-300x200-jpg",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` Post-Deployment Verification section so the listed Memory 1 asset path matches `/assets/generated/memory-1-v7.dim_300x200.jpg`.",
+      "reqIds": [
+        "REQ-55"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-bundled-static-image-asset-from-the-uploaded-file-rsz-1screenshot-20230820-093210-gallery-1-1-jpg-cropped-positioned-to-300x200-jpg-with-the-face-s-top-center-and-clearly-visible-and-save-it-under-frontend-public-assets-generated",
+      "title": "Create a new bundled static image asset from the uploaded file `rsz_1screenshot_20230820-093210_gallery (1)-1.jpg`, cropped/positioned to 300x200 JPG with the face(s) top-center and clearly visible, and save it under `frontend/public/assets/generated/`.",
+      "reqIds": [
+        "REQ-56"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-features-valentine-steps-memoriesstep-tsx-so-the-memory-1-image-the-first-entry-in-permanent-images-uses-assets-generated-memory-1-v8-dim-300x200-jpg-without-changing-the-existing-layout-captions-or-the-other-memory-images",
+      "title": "Update `frontend/src/features/valentine/steps/MemoriesStep.tsx` so the Memory 1 image (the first entry in `PERMANENT_IMAGES`) uses `/assets/generated/memory-1-v8.dim_300x200.jpg`, without changing the existing layout, captions, or the other memory images.",
+      "reqIds": [
+        "REQ-57"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-post-deployment-verification-section-so-the-memory-1-asset-path-matches-assets-generated-memory-1-v8-dim-300x200-jpg",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` Post-Deployment Verification section so the Memory 1 asset path matches `/assets/generated/memory-1-v8.dim_300x200.jpg`.",
+      "reqIds": [
+        "REQ-58"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-three-static-memory-card-images-shown-on-step-3-memories-with-new-user-provided-photos-bundled-in-the-frontend-while-keeping-the-existing-layout-captions-and-behavior-unchanged-still-3-cards-no-upload-change-reset-controls",
+      "title": "Replace the three static Memory card images shown on Step 3 (Memories) with new user-provided photos bundled in the frontend, while keeping the existing layout, captions, and behavior unchanged (still 3 cards; no upload/change/reset controls).",
+      "reqIds": [
+        "REQ-59"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-three-user-provided-photos-as-static-frontend-assets-under-frontend-public-assets-generated-each-cropped-fit-to-exactly-300x200-in-jpg-format-and-reference-them-from-frontend-src-features-valentine-steps-memoriesstep-tsx-by-updating-the-permanent-images-list-to-the-new-asset-paths",
+      "title": "Add the three user-provided photos as static frontend assets under `frontend/public/assets/generated/`, each cropped/fit to exactly 300x200 in JPG format, and reference them from `frontend/src/features/valentine/steps/MemoriesStep.tsx` by updating the `PERMANENT_IMAGES` list to the new asset paths.",
+      "reqIds": [
+        "REQ-60"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-post-deployment-verification-section-to-list-the-new-memory-1-2-3-asset-paths-that-step-3-now-uses",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` Post-Deployment Verification section to list the new Memory 1/2/3 asset paths that Step 3 now uses.",
+      "reqIds": [
+        "REQ-61"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-the-frontend-codebase-for-any-remaining-stock-placeholder-image-usage-including-historical-https-via-placeholder-com-300x200-and-any-other-external-placeholder-stock-urls-and-ensure-no-ui-visible-images-are-loaded-from-those-sources",
+      "title": "Audit the frontend codebase for any remaining stock/placeholder image usage (including historical `https://via.placeholder.com/300x200` and any other external placeholder/stock URLs) and ensure no UI-visible images are loaded from those sources.",
+      "reqIds": [
+        "REQ-63"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-isolate-deprecated-legacy-memories-image-code-paths-that-still-reference-older-stock-placeholder-image-assets-so-they-cannot-be-used-by-the-ui-e-g-update-or-delete-any-unused-hooks-helpers-that-point-to-older-default-stock-image-paths",
+      "title": "Remove or isolate deprecated/legacy Memories image code paths that still reference older stock/placeholder image assets so they cannot be used by the UI (e.g., update or delete any unused hooks/helpers that point to older default/stock image paths).",
+      "reqIds": [
+        "REQ-64"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-deployment-checklist-md-to-include-a-verification-step-that-confirms-there-are-no-placeholder-stock-image-urls-remaining-in-the-deployed-site-and-that-all-images-are-served-from-bundled-static-assets",
+      "title": "Update `frontend/DEPLOYMENT_CHECKLIST.md` to include a verification step that confirms there are no placeholder/stock image URLs remaining in the deployed site and that all images are served from bundled/static assets.",
+      "reqIds": [
+        "REQ-65"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-revert-roll-back-the-entire-application-codebase-and-bundled-static-assets-to-exactly-what-was-deployed-as-version-15-replacing-the-current-version-29-state",
+      "title": "Revert (roll back) the entire application codebase and bundled static assets to exactly what was deployed as Version 15, replacing the current Version 29+ state.",
+      "reqIds": [
+        "REQ-66"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-after-rolling-back-to-version-15-redeploy-the-application-so-the-live-preview-reflects-version-15-behavior-and-renders-correctly-end-to-end",
+      "title": "After rolling back to Version 15, redeploy the application so the live Preview reflects Version 15 behavior and renders correctly end-to-end.",
+      "reqIds": [
+        "REQ-67"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -475,6 +637,44 @@
     {
       "id": "AR-21",
       "summary": "Update final step (Page 5) NO button behavior: remove the 'run away/move on hover' interaction and on NO click display the message \"The button is broken, try the green one instead 😏💚\".",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "On the final step (Page 5), when the YES button is clicked, show a \"shower of flowers\" celebration effect (in addition to or replacing the current confetti).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "For the Memories card captioned \"📸 The day we started talking and I lost my peace 😌\", replace its image with the image used in the card immediately above it, and crop/position the photo so the face is at the top-center and clearly visible.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Allow updating/replacing the Page 3 (Memories) photos with user-specified photos the user wants to use.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Update Page 3 (Memories) Memory 2 card (caption: \"📸 Can't keep my eyes off of you 👀\") to use the newly provided user image, keeping layout/captions/behavior unchanged.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-26",
+      "summary": "Add the user-uploaded image `IMG-20250531-WA0033.jpg` as the static bundled photo for Memory 2 on Step 3 (Memories), for the card with caption exactly: \"📸 Can't keep my eyes off of you 👀\". The image must be cropped/fit to exactly 300x200 in JPG format and stored under `frontend/public/assets/generated/` as `/assets/generated/memory-2-user.dim_300x200.jpg`.",
+      "reqIds": [
+        "REQ-62"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-27",
+      "summary": "Revert the application to version 15 (rollback to a previously working version).",
       "reqIds": [],
       "status": "pending"
     }

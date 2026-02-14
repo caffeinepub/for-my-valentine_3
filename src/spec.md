@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Update the Final step (Page 5) NO button behavior so it no longer moves on hover and shows a new response message when clicked.
+**Goal:** Roll back the entire application to the previously working Version 15 state and redeploy so the Preview reflects Version 15 behavior.
 
 **Planned changes:**
-- Remove the NO button “run away/move on hover” behavior so hovering does not change its position and it remains in the normal YES/NO button row layout.
-- Update NO button click behavior to display exactly: "The button is broken, try the green one instead 😏💚" in the existing response area (no new UI component).
-- Update `frontend/DEPLOYMENT_CHECKLIST.md` to reflect the new NO button behavior (no hover movement; click shows the updated message).
+- Revert the full repository (frontend, backend, and bundled static assets) to exactly match the Version 15 snapshot, removing all changes introduced after Version 15.
+- Ensure the Version 15 state builds successfully and the Preview loads without runtime errors.
+- Redeploy the rolled-back Version 15 application so the live Preview runs end-to-end, including the Valentine flow.
 
-**User-visible outcome:** On the Final step (Page 5), the NO button stays in place when hovered, and clicking it shows: "The button is broken, try the green one instead 😏💚", while the YES button continues to behave as before.
+**User-visible outcome:** The live Preview runs the Version 15 version of the app, loads without errors, and users can click through the Valentine flow successfully.
